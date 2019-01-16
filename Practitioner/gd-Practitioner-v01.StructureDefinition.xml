@@ -13,105 +13,82 @@
   <baseDefinition value="http://hl7.no/fhir/StructureDefinition/no-basis-Practitioner" />
   <derivation value="constraint" />
   <differential>
-    <element id="Practitioner.qualification.code:endReason">
-      <path value="Practitioner.qualification.code" />
+    <element id="Practitioner.qualification.extension">
+      <path value="Practitioner.qualification.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Practitioner.qualification.extension:endReason">
+      <path value="Practitioner.qualification.extension" />
       <sliceName value="endReason" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-endReason" />
+      </type>
     </element>
-    <element id="Practitioner.qualification.code:endReason.coding.system">
-      <path value="Practitioner.qualification.code.coding.system" />
-      <fixedUri value="urn:oid:2.16.578.1.12.4.1.1.7705" />
+    <element id="Practitioner.qualification.extension:suspensionPeriod">
+      <path value="Practitioner.qualification.extension" />
+      <sliceName value="suspensionPeriod" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-suspensionPeriod" />
+      </type>
     </element>
-    <element id="Practitioner.qualification.code:approvalCondition">
-      <path value="Practitioner.qualification.code" />
+    <element id="Practitioner.qualification.extension:approvalType">
+      <path value="Practitioner.qualification.extension" />
+      <sliceName value="approvalType" />
+      <definition value="Approval type is also defined as a slice on Practitioner.qualification.code in no-basis-Practitioner, but since code has cardinality 1..1 we would have to choose between assigning a healthPersonnellCategory or approvalType to that field. Therefore, it is also defined in this profile as a separate extension on qualification." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-approvalType" />
+      </type>
+    </element>
+    <element id="Practitioner.qualification.extension:approvalCondition">
+      <path value="Practitioner.qualification.extension" />
       <sliceName value="approvalCondition" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-approvalCondition" />
+      </type>
     </element>
-    <element id="Practitioner.qualification.code:approvalCondition.coding.system">
-      <path value="Practitioner.qualification.code.coding.system" />
-      <fixedUri value="urn:oid:2.16.578.1.12.4.1.1.7700" />
-    </element>
-    <element id="Practitioner.qualification.code:specialty">
-      <path value="Practitioner.qualification.code" />
+    <element id="Practitioner.qualification.extension:specialty">
+      <path value="Practitioner.qualification.extension" />
       <sliceName value="specialty" />
-    </element>
-    <element id="Practitioner.qualification.code:specialty.extension">
-      <path value="Practitioner.qualification.code.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <rules value="open" />
-      </slicing>
-    </element>
-    <element id="Practitioner.qualification.code:specialty.extension:valid">
-      <path value="Practitioner.qualification.code.extension" />
-      <sliceName value="valid" />
-      <min value="1" />
-      <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-period" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-specialty" />
       </type>
     </element>
-    <element id="Practitioner.qualification.code:specialty.coding.system">
-      <path value="Practitioner.qualification.code.coding.system" />
-      <fixedUri value="urn:oid:2.16.578.1.12.4.1.1.7426" />
-    </element>
-    <element id="Practitioner.qualification.code:prescriptionCapability">
-      <path value="Practitioner.qualification.code" />
+    <element id="Practitioner.qualification.extension:prescriptionCapability">
+      <path value="Practitioner.qualification.extension" />
       <sliceName value="prescriptionCapability" />
-    </element>
-    <element id="Practitioner.qualification.code:prescriptionCapability.extension">
-      <path value="Practitioner.qualification.code.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <rules value="open" />
-      </slicing>
-    </element>
-    <element id="Practitioner.qualification.code:prescriptionCapability.extension:valid">
-      <path value="Practitioner.qualification.code.extension" />
-      <sliceName value="valid" />
-      <min value="1" />
-      <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-period" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-prescriptionCapability" />
       </type>
     </element>
-    <element id="Practitioner.qualification.code:prescriptionCapability.coding.system">
-      <path value="Practitioner.qualification.code.coding.system" />
-      <fixedUri value="urn:oid:2.16.578.1.12.4.1.1.7701" />
-    </element>
-    <element id="Practitioner.qualification.code:additionalRegistration">
-      <path value="Practitioner.qualification.code" />
+    <element id="Practitioner.qualification.extension:additionalRegistration">
+      <path value="Practitioner.qualification.extension" />
       <sliceName value="additionalRegistration" />
-    </element>
-    <element id="Practitioner.qualification.code:additionalRegistrations.extension">
-      <path value="Practitioner.qualification.code.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <rules value="open" />
-      </slicing>
-    </element>
-    <element id="Practitioner.qualification.code:additionalRegistration.extension:valid">
-      <path value="Practitioner.qualification.code.extension" />
-      <sliceName value="valid" />
-      <min value="1" />
-      <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-period" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-additionalRegistration" />
       </type>
     </element>
-    <element id="Practitioner.qualification.code:additionalRegistration.coding.system">
-      <path value="Practitioner.qualification.code.coding.system" />
-      <fixedUri value="urn:oid:2.16.578.1.12.4.1.1.7702" />
+    <element id="Practitioner.qualification.code:approvalType">
+      <path value="Practitioner.qualification.code" />
+      <sliceName value="approvalType" />
+      <max value="0" />
     </element>
   </differential>
 </StructureDefinition>
