@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="gd-Address" />
+  <url value="http://ehelse.no/fhir/StructureDefinition/gd-Address" />
+  <version value="0.1" />
+  <name value="gd-Address" />
+  <status value="draft" />
+  <date value="2018-06-12" />
+  <description value="Grunndata adresse" />
+  <fhirVersion value="3.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <type value="Address" />
+  <baseDefinition value="http://hl7.no/fhir/StructureDefinition/no-basis-Address" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Address.line.extension">
+      <path value="Address.line.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Address.line.extension:streetName">
+      <path value="Address.line.extension" />
+      <sliceName value="streetName" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName" />
+      </type>
+    </element>
+    <element id="Address.line.extension:houseNumber">
+      <path value="Address.line.extension" />
+      <sliceName value="houseNumber" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber" />
+      </type>
+    </element>
+    <element id="Address.line.extension:buildingNumberSuffix">
+      <path value="Address.line.extension" />
+      <sliceName value="buildingNumberSuffix" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-buildingNumberSuffix" />
+      </type>
+    </element>
+    <element id="Address.city">
+      <path value="Address.city" />
+      <definition value="When a postalcode is given the name of the city must be poststed according to the official list of postalcodes used in Norway.&#xD;&#xA;&#xD;&#xA;The name of the city, town, village or other community or delivery center." />
+      <alias value="poststedsnavn" />
+    </element>
+    <element id="Address.district">
+      <path value="Address.district" />
+      <short value="Kommune" />
+    </element>
+    <element id="Address.district.extension">
+      <path value="Address.district.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Address.district.extension:districtCode">
+      <path value="Address.district.extension" />
+      <sliceName value="districtCode" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://ehelse.no/Code/districtCode" />
+      </type>
+    </element>
+    <element id="Address.state">
+      <path value="Address.state" />
+      <short value="Fylke" />
+      <definition value="Representerer fylker i norge" />
+    </element>
+    <element id="Address.state.extension">
+      <path value="Address.state.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Address.state.extension:stateCode">
+      <path value="Address.state.extension" />
+      <sliceName value="stateCode" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="https://ehelse.no/Code/fylkeCode" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>
