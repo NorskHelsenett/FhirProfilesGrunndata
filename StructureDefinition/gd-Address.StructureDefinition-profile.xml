@@ -14,6 +14,26 @@
   <baseDefinition value="http://hl7.no/fhir/StructureDefinition/no-basis-Address" />
   <derivation value="constraint" />
   <differential>
+    <element id="Address.extension">
+      <path value="Address.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Address.extension:registermetadata">
+      <path value="Address.extension" />
+      <sliceName value="registermetadata" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-registermetadata" />
+      </type>
+    </element>
     <element id="Address.line.extension">
       <path value="Address.line.extension" />
       <slicing>
@@ -53,55 +73,8 @@
     </element>
     <element id="Address.city">
       <path value="Address.city" />
-      <definition value="When a postalcode is given the name of the city must be poststed according to the official list of postalcodes used in Norway.&#xD;&#xA;&#xD;&#xA;The name of the city, town, village or other community or delivery center." />
+      <definition value="The name of the poststed or city. When a postalcode is given the name of the city must be according to the official list of postalcodes used in Norway. &#xD;&#xA;&#xD;&#xA;The name of the city, town, village or other community or delivery center." />
       <alias value="poststedsnavn" />
-    </element>
-    <element id="Address.district">
-      <path value="Address.district" />
-      <short value="Kommune" />
-    </element>
-    <element id="Address.district.extension">
-      <path value="Address.district.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <rules value="open" />
-      </slicing>
-    </element>
-    <element id="Address.district.extension:districtCode">
-      <path value="Address.district.extension" />
-      <sliceName value="districtCode" />
-      <max value="1" />
-      <type>
-        <code value="Extension" />
-        <profile value="https://ehelse.no/Code/districtCode" />
-      </type>
-    </element>
-    <element id="Address.state">
-      <path value="Address.state" />
-      <short value="Fylke" />
-      <definition value="Representerer fylker i norge" />
-    </element>
-    <element id="Address.state.extension">
-      <path value="Address.state.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <rules value="open" />
-      </slicing>
-    </element>
-    <element id="Address.state.extension:stateCode">
-      <path value="Address.state.extension" />
-      <sliceName value="stateCode" />
-      <max value="1" />
-      <type>
-        <code value="Extension" />
-        <profile value="https://ehelse.no/Code/fylkeCode" />
-      </type>
     </element>
   </differential>
 </StructureDefinition>
