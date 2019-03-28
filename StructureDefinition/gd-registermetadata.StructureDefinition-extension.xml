@@ -7,7 +7,7 @@
   <title value="registermetadata" />
   <status value="draft" />
   <date value="2019-03-27" />
-  <description value="Registermetadata describes metadata about resources available from the norwegian person index (folkeregisteret), all resources containing metadata from folkeregisteret will include registermetadata" />
+  <description value="Registermetadata describes metadata about resources available from the norwegian person index (folkeregisteret), all resources containing metadata from folkeregisteret will include registermetadata, the metadata is taken directrly from folkeregisteret" />
   <fhirVersion value="3.0.1" />
   <kind value="complex-type" />
   <abstract value="false" />
