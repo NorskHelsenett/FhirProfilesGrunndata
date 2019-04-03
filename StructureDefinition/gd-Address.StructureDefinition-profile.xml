@@ -6,7 +6,7 @@
   <name value="gd-Address" />
   <status value="draft" />
   <date value="2018-06-12" />
-  <description value="Grunndata adresse" />
+  <description value="Grunndata adresse&#xD;&#xA;Contains information and metadata for addresses defined in Norwegian Master Person Index and Norwegian Directorate of e-Health's health related Master Person Index." />
   <fhirVersion value="3.0.1" />
   <kind value="complex-type" />
   <abstract value="false" />
@@ -45,7 +45,7 @@
     </element>
     <element id="Address.city">
       <path value="Address.city" />
-      <definition value="The name of the poststed or city. When a postalcode is given the name of the city must be according to the official list of postalcodes used in Norway. &#xD;&#xA;&#xD;&#xA;The name of the city, town, village or other community or delivery center." />
+      <definition value="gd-Address: All Norwegian addresses are from Master Person Index uses this element for &quot;poststed&quot; or &quot;postedsnavn&quot;. International addresses uses this element to communicate the name of the city.&#xD;&#xA;&#xD;&#xA;The name of the poststed or city. When a postalcode is given the name of the city must be according to the official list of postalcodes used in Norway. &#xD;&#xA;&#xD;&#xA;The name of the city, town, village or other community or delivery center." />
       <alias value="poststedsnavn" />
     </element>
   </differential>

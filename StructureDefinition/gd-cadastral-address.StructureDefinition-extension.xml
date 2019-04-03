@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="gd-cadastral-address" />
+  <url value="http://ehelse.no/fhir/StructureDefinition/gd-cadastral-address" />
+  <version value="0.1" />
+  <name value="gd-cadastral-address" />
+  <status value="draft" />
+  <date value="2019-04-03" />
+  <description value="Information specific to the cadastral address from FREG" />
+  <fhirVersion value="3.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <contextType value="datatype" />
+  <context value="Address" />
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension">
+      <path value="Extension" />
+      <short value="bruksenhetstype og bruksenhetsnummer fra FREG" />
+      <definition value="Includes the identification and type of a separately occupied unit as registered in the Norwegian Master Person Index." />
+      <alias value="bruksenhet" />
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension">
+      <path value="Extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Extension.extension:subNumber">
+      <path value="Extension.extension" />
+      <sliceName value="subNumber" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:subNumber.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="subNumber" />
+    </element>
+    <element id="Extension.extension:subNumber.value[x]:valueInteger">
+      <path value="Extension.extension.valueInteger" />
+      <sliceName value="valueInteger" />
+      <type>
+        <code value="integer" />
+      </type>
+    </element>
+    <element id="Extension.extension:addressAdditionalName">
+      <path value="Extension.extension" />
+      <sliceName value="addressAdditionalName" />
+      <short value="additional name in use" />
+      <definition value="nedarvet bruksnavn eller navn på en institusjon eller bygning, brukt som del av den offisielle adressen&#xD;&#xA;" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:addressAdditionalName.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="addressAdditionalName" />
+    </element>
+    <element id="Extension.extension:addressAdditionalName.value[x]:valueString">
+      <path value="Extension.extension.valueString" />
+      <sliceName value="valueString" />
+      <type>
+        <code value="string" />
+      </type>
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="http://ehelse.no/fhir/StructureDefinition/gd-cadastral-address" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>
