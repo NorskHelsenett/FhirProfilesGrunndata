@@ -18,19 +18,8 @@
   <differential>
     <element id="Extension">
       <path value="Extension" />
-      <short value="Optional Extensions Element" />
-      <definition value="Optional Extension Element - found in all resources." />
-      <constraint>
-        <key value="ext-1" />
-        <severity value="error" />
-        <human value="Must have either extensions or value[x], not both" />
-        <expression value="extension.exists() != value.exists()" />
-        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-      </constraint>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
+      <short value="Address specific metadata from FREG" />
+      <definition value="Describes address specific metadata about the address resources available from the the central person index (folkeregisteret, FREG), all address resources containing metadata from folkeregisteret will include gd-address-metadata" />
     </element>
     <element id="Extension.extension">
       <path value="Extension.extension" />
@@ -46,7 +35,7 @@
       <path value="Extension.extension" />
       <sliceName value="confidentiality" />
       <short value="Confidentiality of the address" />
-      <definition value="kategori av beskyttelsesgrad på adresseinformasjon i Folkeregisteret&#xD;&#xA;Gyldige kodeverdier er:&#xD;&#xA;• ugradert&#xD;&#xA;• klientadresse&#xD;&#xA;• fortrolig&#xD;&#xA;• strengtFortrolig (strengt fortrolig)&#xD;&#xA;Bostedsadressen kan være beskyttet iht. Beskyttelsesinstruksen (fortrolig og strengtFortrolig) eller Folkeregisterloven (klientadresse) &#xD;&#xA;" />
+      <definition value="kategori av beskyttelsesgrad på adresseinformasjon i Folkeregisteret&#xD;&#xA;Gyldige kodeverdier er:&#xD;&#xA;• ugradert&#xD;&#xA;• klientadresse&#xD;&#xA;• fortrolig&#xD;&#xA;• strengtFortrolig (strengt fortrolig)&#xD;&#xA;Bostedsadressen kan være beskyttet iht. Beskyttelsesinstruksen (fortrolig og strengtFortrolig) eller Folkeregisterloven (klientadresse)" />
       <alias value="adressegradering" />
       <min value="1" />
       <max value="1" />
@@ -85,7 +74,7 @@
       <path value="Extension.extension" />
       <sliceName value="parishId" />
       <short value="kirkekrets" />
-      <definition value="minste kirkelige administrative inndeling&#xD;&#xA;Informasjonen er gitt ved en unik kode innenfor kommunen.&#xD;&#xA;" />
+      <definition value="minste kirkelige administrative inndeling&#xD;&#xA;Informasjonen er gitt ved en unik kode innenfor kommunen." />
       <alias value="kirkekrets" />
       <max value="1" />
     </element>
@@ -123,7 +112,7 @@
       <path value="Extension.extension" />
       <sliceName value="constituencyId" />
       <short value="stemmekrets" />
-      <definition value="FREG kaller dette stemmekrets, matrikkelen kaller dette valgkrets.&#xD;&#xA;del av en geografisk inndeling av kommunen som er bestemt av valgstyret&#xD;&#xA;Informasjonen er gitt ved en unik kode innenfor kommunen.&#xD;&#xA;" />
+      <definition value="FREG kaller dette stemmekrets, matrikkelen kaller dette valgkrets.&#xD;&#xA;del av en geografisk inndeling av kommunen som er bestemt av valgstyret&#xD;&#xA;Informasjonen er gitt ved en unik kode innenfor kommunen." />
       <alias value="valgkrets" />
       <alias value="stemmekrets" />
       <max value="1" />
@@ -198,7 +187,7 @@
       <path value="Extension.extension" />
       <sliceName value="schoolDistrict" />
       <short value="skolekrets fra FREG" />
-      <definition value="en kommunal inndeling som gir en ikke bindende skoletilhørighet for barna i kretsen&#xD;&#xA;Informasjonen er gitt ved en unik kode innenfor kommunen.&#xD;&#xA;" />
+      <definition value="en kommunal inndeling som gir en ikke bindende skoletilhørighet for barna i kretsen&#xD;&#xA;Informasjonen er gitt ved en unik kode innenfor kommunen." />
       <alias value="skolekrets" />
       <max value="1" />
     </element>

@@ -24,52 +24,23 @@
         <rules value="open" />
       </slicing>
     </element>
-    <element id="Address.extension:fregmetadata">
+    <element id="Address.extension:fregMetadata">
       <path value="Address.extension" />
-      <sliceName value="fregmetadata" />
+      <sliceName value="fregMetadata" />
       <definition value="fregmetadata (registermetadata) describes metadata about resources available from the norwegian person index (folkeregisteret, freg), all resources containing metadata from folkeregisteret will include registermetadata" />
-      <alias value="registermetadata" />
-      <alias value="RegistermetadataMedGyldighet" />
       <type>
         <code value="Extension" />
         <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
       </type>
     </element>
-    <element id="Address.line.extension">
-      <path value="Address.line.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <rules value="open" />
-      </slicing>
-    </element>
-    <element id="Address.line.extension:streetName">
-      <path value="Address.line.extension" />
-      <sliceName value="streetName" />
-      <max value="1" />
+    <element id="Address.extension:addressMetadata">
+      <path value="Address.extension" />
+      <sliceName value="addressMetadata" />
+      <short value="Address specific metadata from FREG" />
+      <definition value="Describes address specific metadata about the address resources available from the the central person index (folkeregisteret, FREG), all address resources containing metadata from folkeregisteret will include gd-address-metadata" />
       <type>
         <code value="Extension" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName" />
-      </type>
-    </element>
-    <element id="Address.line.extension:houseNumber">
-      <path value="Address.line.extension" />
-      <sliceName value="houseNumber" />
-      <max value="1" />
-      <type>
-        <code value="Extension" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber" />
-      </type>
-    </element>
-    <element id="Address.line.extension:buildingNumberSuffix">
-      <path value="Address.line.extension" />
-      <sliceName value="buildingNumberSuffix" />
-      <max value="1" />
-      <type>
-        <code value="Extension" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-buildingNumberSuffix" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-address-metadata" />
       </type>
     </element>
     <element id="Address.city">
