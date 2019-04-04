@@ -6,7 +6,8 @@
   <name value="gd-Address-cadastral" />
   <status value="draft" />
   <date value="2019-04-03" />
-  <description value="Contains information and metadata for addresses defined in Norwegian Master Person Index (FREG) and Norwegian Directorate of e-Health's health related Master Person Index.&#xD;&#xA;&#xD;&#xA;The structure defines information structure of a Norwegian cadastral address, as defined by FREG." />
+  <description value="Contains information and metadata for addresses defined in Norwegian Master Person Index (FREG) and Norwegian Directorate of e-Health's health related Master Person Index.&#xD;&#xA;&#xD;&#xA;The profile defines information structure of a Norwegian cadastral address (matrikkeladresse), as defined by FREG." />
+  <purpose value="Matrikkeladresse" />
   <fhirVersion value="3.0.1" />
   <kind value="complex-type" />
   <abstract value="false" />
@@ -37,12 +38,13 @@
     <element id="Address.extension:cadastralAddress.extension:subNumber">
       <path value="Address.extension.extension" />
       <sliceName value="subNumber" />
-      <short value="includes subNumber and additionalName for the Cadastral address " />
+      <short value="includes subNumber and additionalName for the Cadastral address" />
       <definition value="includes subNumber and additionalName for the Cadastral address as registered in the Norwegian Master Person Index.&#xD;&#xA;&#xD;&#xA;undernummer&#xD;&#xA;addressetilleggsnavn" />
     </element>
     <element id="Address.extension:separatelyOccupiedUnit">
       <path value="Address.extension" />
       <sliceName value="separatelyOccupiedUnit" />
+      <max value="1" />
       <type>
         <code value="Extension" />
         <profile value="http://ehelse.no/fhir/StructureDefinition/gd-separately-occupied-unit" />
