@@ -26,6 +26,28 @@
       <sliceName value="condominiumUnitNumber" />
       <mustSupport value="false" />
     </element>
+    <element id="Address.extension:cadastralAddress">
+      <path value="Address.extension" />
+      <sliceName value="cadastralAddress" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-cadastral-address" />
+      </type>
+    </element>
+    <element id="Address.extension:cadastralAddress.extension:subNumber">
+      <path value="Address.extension.extension" />
+      <sliceName value="subNumber" />
+      <short value="includes subNumber and additionalName for the Cadastral address " />
+      <definition value="includes subNumber and additionalName for the Cadastral address as registered in the Norwegian Master Person Index.&#xD;&#xA;&#xD;&#xA;undernummer&#xD;&#xA;addressetilleggsnavn" />
+    </element>
+    <element id="Address.extension:separatelyOccupiedUnit">
+      <path value="Address.extension" />
+      <sliceName value="separatelyOccupiedUnit" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-separately-occupied-unit" />
+      </type>
+    </element>
     <element id="Address.line.extension">
       <path value="Address.line.extension" />
       <slicing>
@@ -42,7 +64,6 @@
       <short value="coAdressenavn fra FREG" />
       <definition value="coAdressenavn fra FREG, beskrivelse av enten hvem mottakeren er i &quot;omsorg&quot; hos (C/O=&quot;care of&quot;) eller hvem som er mottaker innen en organisasjon (v/=ved eller Att:=&quot;attention&quot;)" />
       <alias value="coAdressenavn" />
-      <min value="0" />
       <max value="1" />
       <type>
         <code value="Extension" />
