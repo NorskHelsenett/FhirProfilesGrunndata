@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="gd-Address" />
-  <url value="http://ehelse.no/fhir/StructureDefinition/gd-Address" />
+  <id value="gd-Address-freeform" />
+  <url value="http://ehelse.no/fhir/StructureDefinition/gd-Address-freeform" />
   <version value="0.1" />
-  <name value="gd-Address" />
+  <name value="gd-Address-freeform" />
   <status value="draft" />
-  <date value="2018-06-12" />
-  <description value="Grunndata adresse&#xD;&#xA;Contains information and metadata for addresses defined in Norwegian Master Person Index and Norwegian Directorate of e-Health's health related Master Person Index." />
+  <date value="2019-04-05" />
+  <description value="Contains information and metadata for addresses defined in Norwegian Master Person Index (FREG) and Norwegian Directorate of e-Health's health related Master Person Index.&#xD;&#xA;&#xD;&#xA;The profile defines information structure of unstructured norwegian or interntional street address (internasjonalAdresseFrittFormat, PostadresseFrittFormat), as defined by FREG." />
   <fhirVersion value="3.0.1" />
   <kind value="complex-type" />
   <abstract value="false" />
   <type value="Address" />
-  <baseDefinition value="http://hl7.no/fhir/StructureDefinition/no-basis-Address" />
+  <baseDefinition value="http://ehelse.no/fhir/StructureDefinition/gd-Address" />
   <derivation value="constraint" />
   <snapshot>
     <element id="Address">
@@ -490,6 +490,7 @@
         <expression value="hasValue() | (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
+      <mustSupport value="true" />
       <isSummary value="true" />
       <mapping>
         <identity value="rim" />
@@ -818,42 +819,9 @@
     </element>
   </snapshot>
   <differential>
-    <element id="Address.extension">
-      <path value="Address.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <rules value="open" />
-      </slicing>
-    </element>
-    <element id="Address.extension:fregMetadata">
-      <path value="Address.extension" />
-      <sliceName value="fregMetadata" />
-      <definition value="fregmetadata (registermetadata) describes metadata about resources available from the norwegian person index (folkeregisteret, freg), all resources containing metadata from folkeregisteret will include registermetadata" />
-      <type>
-        <code value="Extension" />
-        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
-      </type>
-    </element>
-    <element id="Address.extension:addressMetadata">
-      <path value="Address.extension" />
-      <sliceName value="addressMetadata" />
-      <type>
-        <code value="Extension" />
-        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-address-metadata" />
-      </type>
-    </element>
-    <element id="Address.city">
-      <path value="Address.city" />
-      <definition value="gd-Address: All Norwegian addresses are from Master Person Index uses this element for &quot;poststed&quot; or &quot;postedsnavn&quot;. International addresses uses this element to communicate the name of the city.&#xD;&#xA;&#xD;&#xA;The name of the poststed or city. When a postalcode is given the name of the city must be according to the official list of postalcodes used in Norway. &#xD;&#xA;&#xD;&#xA;The name of the city, town, village or other community or delivery center." />
-      <alias value="poststedsnavn" />
-    </element>
-    <element id="Address.district">
-      <path value="Address.district" />
-      <short value="name of &quot;kommune&quot; or district" />
-      <definition value="gd-Address: Norwegian addresses uses district for the norwegian &quot;kommune&quot;, international addresses uses district for any other applicable district in that country.&#xD;&#xA;&#xD;&#xA;Name of the county (norwegian &quot;kommune&quot;). If kommune number is required &quot;eiendomsinformasjon&quot; should be used.&#xD;&#xA;&#xD;&#xA;The name of the administrative area (county)." />
+    <element id="Address.line">
+      <path value="Address.line" />
+      <mustSupport value="true" />
     </element>
   </differential>
 </StructureDefinition>
