@@ -5,6 +5,7 @@
 - Implementasjonsguider med metafiler
 - CapabilityStatement
 - PackageDefinition
+- Figurer og illustrasjoner
 
 ## Publisering
 Ferdige profiler publiseres også her: 
@@ -21,13 +22,14 @@ https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workf
 
 |\\[prosjektnavn]| | |
 |---|---|---|
+| |\\CapabilityStatement | Capability statement, API spesifikasjon |
 | |\\CodeSystem | CodeSystem definisjoner |
 | |\\examples | eksempler |
+| |\\images | illustrasjoner og figurer |
 | |\\REST-kall | Optional |
 | |\\StructureDefinition | alle extensions og profiler |
 | |\\ValueSet | ValueSet definisjoner |
 | |[prosjektnavn]-[versjon].zip | Pakke med det ferdige resultatet for en versjon |
-| |\\CapabilityStatement | Capability statement, API spesifikasjon
 
 ## Navngivning av filer
 Inne i katalogene benytter vi navngivningsregler fra [SIMPLIFIER Best practices] (https://simplifier.net/guide/ProfilingAcademy/Best-practices)
