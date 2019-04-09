@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="gd-fregmetadata" />
+  <url value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
+  <version value="0.2" />
+  <name value="gd-fregmetadata" />
+  <title value="registermetadata" />
+  <status value="draft" />
+  <date value="2019-03-28" />
+  <description value="fregmetadata (registermetadata) describes metadata about resources available from the norwegian person index (folkeregisteret, freg), all resources containing metadata from folkeregisteret will include registermetadata" />
+  <purpose value="registermetadata and registermetadataMedGyldighet from FREG" />
+  <fhirVersion value="3.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <contextType value="resource" />
+  <context value="Patient" />
+  <context value="Person" />
+  <context value="Address" />
+  <context value="RelatedPerson" />
+  <type value="Extension" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Extension">
+      <path value="Extension" />
+      <short value="registermetadata fra folkeregisteret" />
+      <definition value="Registermetadata describes metadata about resources available from the norwegian person index (folkeregisteret), all resources containing metadata from folkeregisteret will include registermetadata" />
+      <alias value="registermetadata" />
+      <alias value="RegistermetadataMedGyldighet" />
+    </element>
+    <element id="Extension.extension">
+      <path value="Extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Extension.extension:registeredTimestamp">
+      <path value="Extension.extension" />
+      <sliceName value="registeredTimestamp" />
+      <short value="ajourholdstidspunkt" />
+      <definition value="ajourholdstidspunkt from folkeregisteret&#xD;&#xA;&quot;Tidspunktet informasjonen ble registrert i Registeret i Folkeregisteret&quot;" />
+      <alias value="ajourholdstidspunkt" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:registeredTimestamp.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="registeredTimestamp" />
+    </element>
+    <element id="Extension.extension:registeredTimestamp.value[x]:valueDateTime">
+      <path value="Extension.extension.valueDateTime" />
+      <sliceName value="valueDateTime" />
+      <type>
+        <code value="dateTime" />
+      </type>
+    </element>
+    <element id="Extension.extension:currentInfo">
+      <path value="Extension.extension" />
+      <sliceName value="currentInfo" />
+      <short value="erGjeldende fra folkeregisteret" />
+      <definition value="Flagg som beskriver om informasjonen er gjeldende nå-informasjon om personen. Siden opphørstidspunktet ikke blir oppdatert på &quot;gammelt&quot; element når nye verdier for et element blir registret, så vil dette bli satt til «true»/«false» når tjenesteoppslaget blir utført -  avhengig om dette er gjeldende informasjon eller ikke." />
+      <alias value="erGjeldende" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:currentInfo.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="currentInfo" />
+    </element>
+    <element id="Extension.extension:currentInfo.value[x]:valueBoolean">
+      <path value="Extension.extension.valueBoolean" />
+      <sliceName value="valueBoolean" />
+      <type>
+        <code value="boolean" />
+      </type>
+    </element>
+    <element id="Extension.extension:source">
+      <path value="Extension.extension" />
+      <sliceName value="source" />
+      <short value="kilde fra folkeregisteret" />
+      <definition value="Kilde for informasjonen i registeret. Er angitt i tilfeller hvor det er behov for denne informasjonen i samfunnet. Hvem registeret mottok informasjon fra som gjorde at Folkeregisteret ble oppdatert, f.eks. personen selv, UDI, et sykehus osv. Kilde er et element som i noen tilfeller vil være taushetsbelagt, og som derfor må tilgangsstyres" />
+      <alias value="kilde" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:source.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="source" />
+    </element>
+    <element id="Extension.extension:source.value[x]:valueString">
+      <path value="Extension.extension.valueString" />
+      <sliceName value="valueString" />
+      <type>
+        <code value="string" />
+      </type>
+    </element>
+    <element id="Extension.extension:reason">
+      <path value="Extension.extension" />
+      <sliceName value="reason" />
+      <short value="aarsak fra folkeregisteret" />
+      <definition value="Hva er årsaken til registrert informasjon. En person med personstatus = «bosatt» kan ha årsak = «født i Norge» eller «innflyttet til Norge»" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:reason.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="reason" />
+    </element>
+    <element id="Extension.extension:reason.value[x]:valueString">
+      <path value="Extension.extension.valueString" />
+      <sliceName value="valueString" />
+      <type>
+        <code value="string" />
+      </type>
+    </element>
+    <element id="Extension.extension:validFrom">
+      <path value="Extension.extension" />
+      <sliceName value="validFrom" />
+      <short value="gyldighetstidspunkt fra folkeregisteret" />
+      <definition value="Tidspunktet oppdateringen gjelder fra. I det nye Folkeregisteret må vi ha kontroll på hva vi kaller tidspunkt for ajourhold og tidspunkt registreringen gjaldt fra. F.eks. vil et fødselsnummer som er tildelt ved fødsel være gyldig fra fødselsdatoen, men kan ha blitt registrert senere i Folkeregisteret&#xD;&#xA;Personopplysninger som har historikk vil alltid ha gyldighetstidstidspunkt" />
+      <alias value="gyldighetstidspunkt" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:validFrom.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="validFrom" />
+    </element>
+    <element id="Extension.extension:validFrom.value[x]:valueDateTime">
+      <path value="Extension.extension.valueDateTime" />
+      <sliceName value="valueDateTime" />
+      <type>
+        <code value="dateTime" />
+      </type>
+    </element>
+    <element id="Extension.extension:validTo">
+      <path value="Extension.extension" />
+      <sliceName value="validTo" />
+      <short value="opphoerstidspunkt fra folkeregisteret" />
+      <definition value="Tidspunktet oppdateringen gjelder til – men ikke på&#xD;&#xA;Blir bare benyttet i tilfeller hvor opplysninger er opphørt og ikke erstattet av ny gjeldende informasjon, vil opphørstidspunktet angi tidspunktet informasjonen var gjeldende til." />
+      <alias value="opphoerstidspunkt" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:validTo.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="validTo" />
+    </element>
+    <element id="Extension.extension:validTo.value[x]:valueDateTime">
+      <path value="Extension.extension.valueDateTime" />
+      <sliceName value="valueDateTime" />
+      <type>
+        <code value="dateTime" />
+      </type>
+    </element>
+    <element id="Extension.url">
+      <path value="Extension.url" />
+      <fixedUri value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
+    </element>
+    <element id="Extension.value[x]">
+      <path value="Extension.value[x]" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

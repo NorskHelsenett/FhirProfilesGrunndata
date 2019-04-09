@@ -9,7 +9,7 @@
   <kind value="resource" />
   <abstract value="false" />
   <type value="Person" />
-  <baseDefinition value="http://hl7.no/fhir/StructureDefinition/no-basis-Person" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Person" />
   <derivation value="constraint" />
   <differential>
     <element id="Person.identifier">
@@ -31,10 +31,12 @@
       <path value="Person.identifier.system" />
       <short value="The actual Fødselsnummer" />
       <definition value="The Norwegian Fødselsnummer" />
+      <fixedUri value="urn:oid:2.16.578.1.12.4.1.4.1" />
     </element>
     <element id="Person.identifier:FNR.value">
       <path value="Person.identifier.value" />
       <short value="The actual Fødselsnummer" />
+      <definition value="The Norwegian Fødselsnummer" />
       <alias value="Fødselsnummer" />
       <example>
         <label value="Fødselsnummer" />
@@ -53,14 +55,14 @@
       <path value="Person.name" />
       <type>
         <code value="HumanName" />
-        <profile value="http://hl7.no/fhir/StructureDefinition/no-basis-HumanName" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/no-basis-HumanName" />
       </type>
     </element>
     <element id="Person.address">
       <path value="Person.address" />
       <type>
         <code value="Address" />
-        <profile value="http://hl7.no/fhir/StructureDefinition/no-basis-Address" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/no-basis-Address" />
       </type>
     </element>
   </differential>
