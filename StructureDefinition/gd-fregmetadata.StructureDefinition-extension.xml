@@ -12,11 +12,12 @@
   <fhirVersion value="3.0.1" />
   <kind value="complex-type" />
   <abstract value="false" />
-  <contextType value="resource" />
+  <contextType value="datatype" />
   <context value="Patient" />
   <context value="Person" />
   <context value="Address" />
   <context value="RelatedPerson" />
+  <context value="HumanName" />
   <type value="Extension" />
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
   <derivation value="constraint" />

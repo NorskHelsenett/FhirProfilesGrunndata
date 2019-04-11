@@ -1,12 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="gd-HumanName" />
   <url value="http://ehelse.no/fhir/StructureDefinition/gd-HumanName" />
+  <version value="0.1" />
   <name value="gd-HumanName" />
   <status value="draft" />
+  <date value="2019-04-11" />
+  <description value="Grunndata personnavn&#xD;&#xA;&#xD;&#xA;Contains information and metadata for human names defined in Norwegian Master Person Index and Norwegian Directorate of e-Health's health related Master Person Index." />
   <fhirVersion value="3.0.1" />
   <kind value="complex-type" />
   <abstract value="false" />
   <type value="HumanName" />
   <baseDefinition value="http://hl7.no/fhir/StructureDefinition/no-basis-HumanName" />
   <derivation value="constraint" />
+  <differential>
+    <element id="HumanName.extension:middlename">
+      <path value="HumanName.extension" />
+      <sliceName value="middlename" />
+      <mustSupport value="true" />
+    </element>
+    <element id="HumanName.extension:fregMetadata">
+      <path value="HumanName.extension" />
+      <sliceName value="fregMetadata" />
+      <short value="registermetadata fra folkeregisteret" />
+      <definition value="fregmetadata (registermetadata) describes metadata about resources available from the norwegian person index (folkeregisteret, freg), all resources containing metadata from folkeregisteret will include registermetadata" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="HumanName.extension:gdFregName">
+      <path value="HumanName.extension" />
+      <sliceName value="gdFregName" />
+      <short value="metadata about human name" />
+      <definition value="metadata about human name from FREG (folkeregisterpersonnavn) describes metadata about HumanName available from the norwegian person index (folkeregisteret, freg)" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-freg-name" />
+      </type>
+      <mustSupport value="true" />
+    </element>
+    <element id="HumanName.extension:gdFregName.extension:shortName">
+      <path value="HumanName.extension.extension" />
+      <sliceName value="shortName" />
+      <mustSupport value="true" />
+    </element>
+    <element id="HumanName.extension:gdFregName.extension:originalName">
+      <path value="HumanName.extension.extension" />
+      <sliceName value="originalName" />
+      <mustSupport value="true" />
+    </element>
+    <element id="HumanName.use">
+      <path value="HumanName.use" />
+      <short value="use is not used in Norwegian names" />
+      <definition value="gd-HumanName don't use this element&#xD;&#xA;&#xD;&#xA;Identifies the purpose for this name." />
+      <mustSupport value="false" />
+    </element>
+    <element id="HumanName.text">
+      <path value="HumanName.text" />
+      <short value="Text is not used in Norwegian names" />
+      <definition value="gd-HumanName don't use this element&#xD;&#xA;" />
+      <mustSupport value="false" />
+    </element>
+    <element id="HumanName.family">
+      <path value="HumanName.family" />
+      <mustSupport value="true" />
+    </element>
+    <element id="HumanName.given">
+      <path value="HumanName.given" />
+      <mustSupport value="true" />
+    </element>
+    <element id="HumanName.period">
+      <path value="HumanName.period" />
+      <definition value="gd-HumanName: will not use this element for metadata about when a HumanName is/was in use. The information will be provided through metadata from the Master Person Index (FREG).&#xD;&#xA;&#xD;&#xA;Indicates the period of time when this name was valid for the named person." />
+      <mustSupport value="false" />
+    </element>
+  </differential>
 </StructureDefinition>
