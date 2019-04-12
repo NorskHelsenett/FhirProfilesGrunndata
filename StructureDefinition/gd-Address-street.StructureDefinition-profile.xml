@@ -6,8 +6,8 @@
   <name value="gd-Address-street" />
   <status value="draft" />
   <date value="2019-04-04" />
-  <description value="Contains information and metadata for addresses defined in Norwegian Master Person Index (FREG) and Norwegian Directorate of e-Health's health related Master Person Index.&#xD;&#xA;&#xD;&#xA;The profile defines information structure of a Norwegian street address (vegadresse, vegadresseforpost), as defined by FREG.&#xD;&#xA;&#xD;&#xA;adresse for en bygning, bruksenhet, eiendom eller annet objekt som er registrert med adresse i matrikkelen&#xD;&#xA;Denne entitetstypen for norsk strukturert vegadresse er fullt kompatibel med strukturen i matrikkelen mht. egenskapsnavn.&#xD;&#xA;" />
-  <purpose value="vegadresse&#xD;&#xA;vegadresseforpost&#xD;&#xA;" />
+  <description value="Contains information and metadata for addresses defined in Norwegian Master Person Index (FREG) and Norwegian Directorate of e-Health's health related Master Person Index.&#xD;&#xA;&#xD;&#xA;The profile defines information structure of a Norwegian street address (vegadresse, vegadresseforpost), as defined by FREG.&#xD;&#xA;&#xD;&#xA;adresse for en bygning, bruksenhet, eiendom eller annet objekt som er registrert med adresse i matrikkelen&#xD;&#xA;Denne entitetstypen for norsk strukturert vegadresse er fullt kompatibel med strukturen i matrikkelen mht. egenskapsnavn." />
+  <purpose value="vegadresse&#xD;&#xA;vegadresseforpost" />
   <fhirVersion value="3.0.1" />
   <kind value="complex-type" />
   <abstract value="false" />
