@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="freg-person-identifier-status" />
-  <url value="http://ehelse.no/fhir/StructureDefinition/freg-person-identifier-status" />
-  <version value="0.1" />
-  <name value="freg-person-identifier-status" />
+  <id value="gd-freg-person-identifier-status" />
+  <url value="http://ehelse.no/fhir/StructureDefinition/gd-freg-person-identifier-status" />
+  <version value="0.2" />
+  <name value="gd-freg-person-identifier-status" />
   <status value="draft" />
-  <date value="2019-04-12" />
+  <date value="2019-04-23" />
   <description value="The status of a person identifier from FREG" />
   <fhirVersion value="3.0.1" />
   <kind value="complex-type" />
@@ -20,17 +20,19 @@
       <path value="Extension" />
       <short value="The status of a person identifier from FREG" />
       <definition value="The status of a person identifier from FREG" />
+      <alias value="Identifikatorstatuskode" />
       <min value="1" />
       <max value="1" />
     </element>
     <element id="Extension.url">
       <path value="Extension.url" />
-      <fixedUri value="http://ehelse.no/fhir/StructureDefinition/freg-person-identifier-status" />
+      <fixedUri value="http://ehelse.no/fhir/StructureDefinition/gd-freg-person-identifier-status" />
     </element>
     <element id="Extension.value[x]:valueCode">
       <path value="Extension.valueCode" />
       <sliceName value="valueCode" />
       <short value="iBruk | opphørt" />
+      <alias value="Identifikatorstatuskode" />
       <type>
         <code value="code" />
       </type>

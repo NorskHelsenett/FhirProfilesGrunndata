@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="gd-Identifier-freg" />
+  <url value="http://ehelse.no/fhir/StructureDefinition/gd-Identifier-freg" />
+  <version value="0.1" />
+  <name value="gd-Identifier-freg" />
+  <status value="draft" />
+  <date value="2019-04-23" />
+  <description value="Person Identifier containing metadata from FREG" />
+  <fhirVersion value="3.0.1" />
+  <kind value="complex-type" />
+  <abstract value="false" />
+  <type value="Identifier" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Identifier" />
+  <derivation value="constraint" />
+  <differential>
+    <element id="Identifier.extension">
+      <path value="Identifier.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Identifier.extension:fregMetadata">
+      <path value="Identifier.extension" />
+      <sliceName value="fregMetadata" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
+      </type>
+    </element>
+    <element id="Identifier.extension:fregStatus">
+      <path value="Identifier.extension" />
+      <sliceName value="fregStatus" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-freg-person-identifier-status" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>
