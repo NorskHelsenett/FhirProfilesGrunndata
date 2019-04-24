@@ -14,6 +14,26 @@
   <baseDefinition value="http://hl7.no/fhir/StructureDefinition/no-basis-Person" />
   <derivation value="constraint" />
   <differential>
+    <element id="Person.extension">
+      <path value="Person.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Person.extension:fregPersonStatus">
+      <path value="Person.extension" />
+      <sliceName value="fregPersonStatus" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-freg-person-status" />
+      </type>
+    </element>
     <element id="Person.identifier">
       <path value="Person.identifier" />
       <slicing>
