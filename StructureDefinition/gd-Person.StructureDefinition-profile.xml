@@ -27,8 +27,6 @@
     <element id="Person.extension:fregPersonStatus">
       <path value="Person.extension" />
       <sliceName value="fregPersonStatus" />
-      <min value="0" />
-      <max value="1" />
       <type>
         <code value="Extension" />
         <profile value="http://ehelse.no/fhir/StructureDefinition/gd-freg-person-status" />
@@ -66,6 +64,35 @@
       <type>
         <code value="HumanName" />
         <profile value="http://ehelse.no/fhir/StructureDefinition/gd-HumanName" />
+      </type>
+    </element>
+    <element id="Person.gender">
+      <path value="Person.gender" />
+      <short value="Juridical gender of the person male | female" />
+      <definition value="The juridical gender of the person. Only codes for male and female is used by FREG (mann/kvinne). Includes FREG metadata. Gender history must be collected via Hendelser as no more than one gender is supported by the base FHIR Resource.&#xD;&#xA;&#xD;&#xA;Beskrivelse fra kilden FREG&#xD;&#xA;det kjønnet en person er registrert med i Folkeregisteret&#xD;&#xA;Dette er et nytt eget informasjonsfelt i Folkeregisteret siden det kun var en del av informasjonen i fødsels- eller d-nummeret i DSF.&#xD;&#xA;Informasjonen gir det «juridiske kjønn» som personen har fått eller selv har valgt.&#xD;&#xA;Mulige verdier etter Folkeregisterloven:&#xD;&#xA;• mann&#xD;&#xA;• kvinne&#xD;&#xA;Under migrering vil kjønn settes ut fra kodingen av kjønn som del av fødsels- eller d-nummer (3. siffer i personnummeret som partall gir kvinne.)&#xD;&#xA;Når kjønn er migrert til Registeret vil kjønn kunne endres separat i Freg.&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Administrative Gender." />
+      <alias value="kjønn" />
+      <alias value="personkjønn" />
+    </element>
+    <element id="Person.gender.extension">
+      <path value="Person.gender.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Person.gender.extension:metadata">
+      <path value="Person.gender.extension" />
+      <sliceName value="metadata" />
+      <short value="Metadata about gender from FREG" />
+      <definition value="Metadata about gender from FREG" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
       </type>
     </element>
     <element id="Person.address">
