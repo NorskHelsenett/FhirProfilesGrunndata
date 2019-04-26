@@ -22,6 +22,9 @@
   <context value="Extension" />
   <context value="Extension.value[x]" />
   <context value="Person.gender" />
+  <context value="Meta" />
+  <context value="Person.meta.security" />
+  <context value="Patient.meta.security" />
   <type value="Extension" />
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
   <derivation value="constraint" />
