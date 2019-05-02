@@ -226,7 +226,7 @@
       <alias value="registermetadata" />
       <alias value="RegistermetadataMedGyldighet" />
       <min value="0" />
-      <max value="*" />
+      <max value="1" />
       <base>
         <path value="Element.extension" />
         <min value="0" />
@@ -837,6 +837,7 @@
       <path value="Address.extension" />
       <sliceName value="fregMetadata" />
       <definition value="fregmetadata (registermetadata) describes metadata about resources available from the norwegian person index (folkeregisteret, freg), all resources containing metadata from folkeregisteret will include registermetadata" />
+      <max value="1" />
       <type>
         <code value="Extension" />
         <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
@@ -845,8 +846,6 @@
     <element id="Address.extension:addressMetadata">
       <path value="Address.extension" />
       <sliceName value="addressMetadata" />
-      <definition value="Describes address specific metadata about the address resources available from the the central person index (folkeregisteret, FREG), all address resources containing metadata from folkeregisteret will include gd-address-metadata" />
-      <min value="0" />
       <max value="1" />
       <type>
         <code value="Extension" />
