@@ -23,7 +23,7 @@
       <definition value="Optional Extension Element - found in all resources." />
       <alias value="foreldreansvar" />
       <min value="0" />
-      <max value="*" />
+      <max value="1" />
       <base>
         <path value="Element" />
         <min value="0" />
@@ -34,7 +34,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -74,7 +74,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -112,7 +112,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -139,6 +139,7 @@
       <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
       <alias value="extensions" />
       <alias value="user content" />
+      <alias value="ansvarligorganisasjon" />
       <min value="0" />
       <max value="1" />
       <base>
@@ -154,7 +155,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -198,7 +199,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -236,7 +237,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -277,7 +278,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -311,7 +312,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -344,7 +345,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -382,7 +383,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -422,7 +423,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <isModifier value="true" />
@@ -471,7 +472,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <isSummary value="true" />
@@ -539,7 +540,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <isSummary value="true" />
@@ -584,7 +585,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <isSummary value="true" />
@@ -625,7 +626,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -682,7 +683,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -714,16 +715,15 @@
         <map value="./IdentifierIssuingAuthority" />
       </mapping>
     </element>
-    <element id="Extension.extension:responsibleSubject">
+    <element id="Extension.extension:subjectOfResponsibility">
       <path value="Extension.extension" />
-      <sliceName value="responsibleSubject" />
+      <sliceName value="subjectOfResponsibility" />
       <short value="The child subject of parenting responsibilty" />
       <definition value="The child that is subject of parenting responsibilty, identified by FNR or DNR of the child in question" />
       <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
       <alias value="extensions" />
       <alias value="user content" />
-      <alias value="ansvars subjekt" />
-      <alias value="harAnsvarFor" />
+      <alias value="ansvarssubjekt" />
       <min value="0" />
       <max value="1" />
       <base>
@@ -739,7 +739,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -758,7 +758,7 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:responsibleSubject.id">
+    <element id="Extension.extension:subjectOfResponsibility.id">
       <path value="Extension.extension.id" />
       <representation value="xmlAttr" />
       <short value="xml:id (or equivalent in JSON)" />
@@ -779,7 +779,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -787,7 +787,7 @@
         <map value="n/a" />
       </mapping>
     </element>
-    <element id="Extension.extension:responsibleSubject.extension">
+    <element id="Extension.extension:subjectOfResponsibility.extension">
       <path value="Extension.extension.extension" />
       <slicing>
         <discriminator>
@@ -817,7 +817,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -836,7 +836,7 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:responsibleSubject.url">
+    <element id="Extension.extension:subjectOfResponsibility.url">
       <path value="Extension.extension.url" />
       <representation value="xmlAttr" />
       <short value="identifies the meaning of the extension" />
@@ -852,13 +852,13 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="responsibleSubject" />
+      <fixedUri value="subjectOfResponsibility" />
       <condition value="ele-1" />
       <constraint>
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -870,7 +870,7 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:responsibleSubject.value[x]:valueIdentifier">
+    <element id="Extension.extension:subjectOfResponsibility.value[x]:valueIdentifier">
       <path value="Extension.extension.valueIdentifier" />
       <sliceName value="valueIdentifier" />
       <short value="Value of extension" />
@@ -896,7 +896,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -908,7 +908,7 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:responsibleSubject.value[x]:valueIdentifier.id">
+    <element id="Extension.extension:subjectOfResponsibility.value[x]:valueIdentifier.id">
       <path value="Extension.extension.valueIdentifier.id" />
       <representation value="xmlAttr" />
       <short value="xml:id (or equivalent in JSON)" />
@@ -929,7 +929,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -937,7 +937,7 @@
         <map value="n/a" />
       </mapping>
     </element>
-    <element id="Extension.extension:responsibleSubject.value[x]:valueIdentifier.extension">
+    <element id="Extension.extension:subjectOfResponsibility.value[x]:valueIdentifier.extension">
       <path value="Extension.extension.valueIdentifier.extension" />
       <slicing>
         <discriminator>
@@ -967,7 +967,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -986,7 +986,7 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:responsibleSubject.value[x]:valueIdentifier.use">
+    <element id="Extension.extension:subjectOfResponsibility.value[x]:valueIdentifier.use">
       <path value="Extension.extension.valueIdentifier.use" />
       <short value="usual | official | temp | secondary (If known)" />
       <definition value="The purpose of this identifier." />
@@ -1007,7 +1007,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <isModifier value="true" />
@@ -1035,7 +1035,7 @@
         <map value="Role.code or implied by context" />
       </mapping>
     </element>
-    <element id="Extension.extension:responsibleSubject.value[x]:valueIdentifier.type">
+    <element id="Extension.extension:subjectOfResponsibility.value[x]:valueIdentifier.type">
       <path value="Extension.extension.valueIdentifier.type" />
       <short value="Description of identifier" />
       <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
@@ -1056,7 +1056,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <isSummary value="true" />
@@ -1098,7 +1098,7 @@
         <map value="Role.code or implied by context" />
       </mapping>
     </element>
-    <element id="Extension.extension:responsibleSubject.value[x]:valueIdentifier.system">
+    <element id="Extension.extension:subjectOfResponsibility.value[x]:valueIdentifier.system">
       <path value="Extension.extension.valueIdentifier.system" />
       <short value="The namespace for the identifier value" />
       <definition value="Establishes the namespace for the value - that is, a URL that describes a set values that are unique." />
@@ -1123,7 +1123,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <isSummary value="true" />
@@ -1144,7 +1144,7 @@
         <map value="./IdentifierType" />
       </mapping>
     </element>
-    <element id="Extension.extension:responsibleSubject.value[x]:valueIdentifier.value">
+    <element id="Extension.extension:subjectOfResponsibility.value[x]:valueIdentifier.value">
       <path value="Extension.extension.valueIdentifier.value" />
       <short value="The value that is unique" />
       <definition value="The portion of the identifier typically relevant to the user and which is unique within the context of the system." />
@@ -1168,7 +1168,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <isSummary value="true" />
@@ -1189,7 +1189,7 @@
         <map value="./Value" />
       </mapping>
     </element>
-    <element id="Extension.extension:responsibleSubject.value[x]:valueIdentifier.period">
+    <element id="Extension.extension:subjectOfResponsibility.value[x]:valueIdentifier.period">
       <path value="Extension.extension.valueIdentifier.period" />
       <short value="Time period when id is/was valid for use" />
       <definition value="Time period during which identifier is/was valid for use." />
@@ -1209,7 +1209,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -1245,7 +1245,7 @@
         <map value="./StartDate and ./EndDate" />
       </mapping>
     </element>
-    <element id="Extension.extension:responsibleSubject.value[x]:valueIdentifier.assigner">
+    <element id="Extension.extension:subjectOfResponsibility.value[x]:valueIdentifier.assigner">
       <path value="Extension.extension.valueIdentifier.assigner" />
       <short value="Organization that issued id (may be just text)" />
       <definition value="Organization that issued/manages the identifier." />
@@ -1266,7 +1266,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -1302,12 +1302,11 @@
       <path value="Extension.extension" />
       <sliceName value="responsibleParty" />
       <short value="The person responsible for the child" />
-      <definition value="The person that takes care of the parenting responsibilty, identified by FNR or DNR of the person in question" />
+      <definition value="The person holding the legal parenting responsibilty, identified by FNR or DNR of the person in question" />
       <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
       <alias value="extensions" />
       <alias value="user content" />
       <alias value="ansvarlig" />
-      <alias value="harAnsvarligPerson" />
       <min value="0" />
       <max value="1" />
       <base>
@@ -1323,7 +1322,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -1363,7 +1362,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -1401,7 +1400,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -1442,7 +1441,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -1480,7 +1479,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -1513,7 +1512,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -1551,7 +1550,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -1591,7 +1590,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <isModifier value="true" />
@@ -1640,7 +1639,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <isSummary value="true" />
@@ -1707,7 +1706,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <isSummary value="true" />
@@ -1752,7 +1751,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <isSummary value="true" />
@@ -1793,7 +1792,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -1850,7 +1849,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -1891,7 +1890,7 @@
       <alias value="extensions" />
       <alias value="user content" />
       <min value="0" />
-      <max value="*" />
+      <max value="1" />
       <base>
         <path value="Element.extension" />
         <min value="0" />
@@ -1905,7 +1904,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -1945,7 +1944,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -1983,7 +1982,52 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:fregMetadata.Extension:metadata">
+      <path value="Extension.extension.extension" />
+      <sliceName value="metadata" />
+      <short value="registermetadata fra folkeregisteret" />
+      <definition value="Registermetadata describes metadata about resources available from the norwegian person index (folkeregisteret), all resources containing metadata from folkeregisteret will include registermetadata" />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <alias value="registermetadata" />
+      <alias value="RegistermetadataMedGyldighet" />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="Element.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -2024,7 +2068,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -2042,7 +2086,7 @@
       <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
       <comment value="A stream of bytes, base64 encoded" />
       <min value="0" />
-      <max value="1" />
+      <max value="0" />
       <base>
         <path value="Extension.value[x]" />
         <min value="0" />
@@ -2167,7 +2211,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -2179,35 +2223,31 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:fregMetadata.value[x].extension">
-      <path value="Extension.extension.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <rules value="open" />
-      </slicing>
-    </element>
-    <element id="Extension.extension:fregMetadata.value[x].extension:metadata">
-      <path value="Extension.extension.extension" />
-      <sliceName value="metadata" />
-      <short value="registermetadata fra folkeregisteret" />
-      <definition value="Registermetadata describes metadata about resources available from the norwegian person index (folkeregisteret), all resources containing metadata from folkeregisteret will include registermetadata" />
-      <alias value="registermetadata" />
-      <alias value="RegistermetadataMedGyldighet" />
+    <element id="Extension.extension:responsiblePartyNoId">
+      <path value="Extension.extension" />
+      <sliceName value="responsiblePartyNoId" />
+      <short value="The person responsible for the child" />
+      <definition value="The person holding the legal parenting responsibilty, identified by name, gender, birthdate and nationality of the person." />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <alias value="ansvarligUtenIdentifikator" />
       <min value="0" />
-      <max value="*" />
+      <max value="1" />
+      <base>
+        <path value="Element.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
-        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
       </type>
       <condition value="ele-1" />
       <constraint>
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <constraint>
@@ -2224,6 +2264,365 @@
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:responsiblePartyNoId.id">
+      <path value="Extension.extension.id" />
+      <representation value="xmlAttr" />
+      <short value="xml:id (or equivalent in JSON)" />
+      <definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+      <comment value="Note that FHIR strings may not exceed 1MB in size" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Element.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="string" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:responsiblePartyNoId.extension">
+      <path value="Extension.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <description value="Extensions are always sliced by (at least) url" />
+        <rules value="open" />
+      </slicing>
+      <short value="Additional Content defined by implementations" />
+      <definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="Element.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:responsiblePartyNoId.url">
+      <path value="Extension.extension.url" />
+      <representation value="xmlAttr" />
+      <short value="identifies the meaning of the extension" />
+      <definition value="Source of the definition for the extension code - a logical name or a URL." />
+      <comment value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="Extension.url" />
+        <min value="1" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="uri" />
+      </type>
+      <fixedUri value="responsiblePartyNoId" />
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:responsiblePartyNoId.value[x]:valueHumanName">
+      <path value="Extension.extension.valueHumanName" />
+      <sliceName value="valueHumanName" />
+      <short value="Norwegian human name" />
+      <definition value="Defines the format of norwegian human name according to norwegian regulation (lov om personnavn)." />
+      <comment value="Names may be changed, or repudiated, or people may have different names in different contexts. Names may be divided into parts of different type that have variable significance depending on context, though the division into parts does not always matter. With personal names, the different parts may or may not be imbued with some implicit meaning; various cultures associate different importance with the name parts and the degree to which systems must care about name parts around the world varies widely." />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="Extension.value[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="HumanName" />
+        <profile value="http://hl7.no/fhir/StructureDefinition/no-basis-HumanName" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="v2" />
+        <map value="XPN" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="EN (actually, PN)" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="ProviderName" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:subjectOfResponsibilityNoId">
+      <path value="Extension.extension" />
+      <sliceName value="subjectOfResponsibilityNoId" />
+      <short value="The child subject of parenting responsibilty" />
+      <definition value="The child that is subject of parenting responsibilty, identified by name, gender, birthdate and nationality of the person." />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <alias value="ansvarssubjektUtenIdentifikator" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Element.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:subjectOfResponsibilityNoId.id">
+      <path value="Extension.extension.id" />
+      <representation value="xmlAttr" />
+      <short value="xml:id (or equivalent in JSON)" />
+      <definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+      <comment value="Note that FHIR strings may not exceed 1MB in size" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Element.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="string" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:subjectOfResponsibilityNoId.extension">
+      <path value="Extension.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <description value="Extensions are always sliced by (at least) url" />
+        <rules value="open" />
+      </slicing>
+      <short value="Additional Content defined by implementations" />
+      <definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="Element.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:subjectOfResponsibilityNoId.url">
+      <path value="Extension.extension.url" />
+      <representation value="xmlAttr" />
+      <short value="identifies the meaning of the extension" />
+      <definition value="Source of the definition for the extension code - a logical name or a URL." />
+      <comment value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="Extension.url" />
+        <min value="1" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="uri" />
+      </type>
+      <fixedUri value="subjectOfResponsibilityNoId" />
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:subjectOfResponsibilityNoId.value[x]:valueHumanName">
+      <path value="Extension.extension.valueHumanName" />
+      <sliceName value="valueHumanName" />
+      <short value="Norwegian human name" />
+      <definition value="Defines the format of norwegian human name according to norwegian regulation (lov om personnavn)." />
+      <comment value="Names may be changed, or repudiated, or people may have different names in different contexts. Names may be divided into parts of different type that have variable significance depending on context, though the division into parts does not always matter. With personal names, the different parts may or may not be imbued with some implicit meaning; various cultures associate different importance with the name parts and the degree to which systems must care about name parts around the world varies widely." />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="Extension.value[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="HumanName" />
+        <profile value="http://hl7.no/fhir/StructureDefinition/no-basis-HumanName" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="v2" />
+        <map value="XPN" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="EN (actually, PN)" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="ProviderName" />
       </mapping>
     </element>
     <element id="Extension.url">
@@ -2248,7 +2647,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -2391,7 +2790,7 @@
         <key value="ele-1" />
         <severity value="error" />
         <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() | (children().count() &gt; id.count())" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <mapping>
@@ -2408,6 +2807,7 @@
     <element id="Extension">
       <path value="Extension" />
       <alias value="foreldreansvar" />
+      <max value="1" />
     </element>
     <element id="Extension.extension">
       <path value="Extension.extension" />
@@ -2424,6 +2824,7 @@
       <sliceName value="responsibleOrganization" />
       <short value="The responsible organization" />
       <definition value="Identity of the organization that has formal responsibility of the child (foreldreansvar). Identified using the organization number from enhetsregisteret." />
+      <alias value="ansvarligorganisasjon" />
       <max value="1" />
       <binding>
         <strength value="required" />
@@ -2457,20 +2858,19 @@
       <definition value="The actual identifier for the organization that is used to identify the organization across multiple disparate systems." />
       <min value="1" />
     </element>
-    <element id="Extension.extension:responsibleSubject">
+    <element id="Extension.extension:subjectOfResponsibility">
       <path value="Extension.extension" />
-      <sliceName value="responsibleSubject" />
+      <sliceName value="subjectOfResponsibility" />
       <short value="The child subject of parenting responsibilty" />
       <definition value="The child that is subject of parenting responsibilty, identified by FNR or DNR of the child in question" />
-      <alias value="ansvars subjekt" />
-      <alias value="harAnsvarFor" />
+      <alias value="ansvarssubjekt" />
       <max value="1" />
     </element>
-    <element id="Extension.extension:responsibleSubject.url">
+    <element id="Extension.extension:subjectOfResponsibility.url">
       <path value="Extension.extension.url" />
-      <fixedUri value="responsibleSubject" />
+      <fixedUri value="subjectOfResponsibility" />
     </element>
-    <element id="Extension.extension:responsibleSubject.value[x]:valueIdentifier">
+    <element id="Extension.extension:subjectOfResponsibility.value[x]:valueIdentifier">
       <path value="Extension.extension.valueIdentifier" />
       <sliceName value="valueIdentifier" />
       <type>
@@ -2482,11 +2882,11 @@
         <profile value="http://ehelse.no/fhir/StructureDefinition/gd-Identifier-DNR" />
       </type>
     </element>
-    <element id="Extension.extension:responsibleSubject.value[x]:valueIdentifier.system">
+    <element id="Extension.extension:subjectOfResponsibility.value[x]:valueIdentifier.system">
       <path value="Extension.extension.valueIdentifier.system" />
       <min value="1" />
     </element>
-    <element id="Extension.extension:responsibleSubject.value[x]:valueIdentifier.value">
+    <element id="Extension.extension:subjectOfResponsibility.value[x]:valueIdentifier.value">
       <path value="Extension.extension.valueIdentifier.value" />
       <min value="1" />
     </element>
@@ -2494,9 +2894,8 @@
       <path value="Extension.extension" />
       <sliceName value="responsibleParty" />
       <short value="The person responsible for the child" />
-      <definition value="The person that takes care of the parenting responsibilty, identified by FNR or DNR of the person in question" />
+      <definition value="The person holding the legal parenting responsibilty, identified by FNR or DNR of the person in question" />
       <alias value="ansvarlig" />
-      <alias value="harAnsvarligPerson" />
       <max value="1" />
     </element>
     <element id="Extension.extension:responsibleParty.url">
@@ -2526,13 +2925,10 @@
     <element id="Extension.extension:fregMetadata">
       <path value="Extension.extension" />
       <sliceName value="fregMetadata" />
+      <max value="1" />
     </element>
-    <element id="Extension.extension:fregMetadata.url">
-      <path value="Extension.extension.url" />
-      <fixedUri value="fregMetadata" />
-    </element>
-    <element id="Extension.extension:fregMetadata.value[x].extension">
-      <path value="Extension.extension.value[x].extension" />
+    <element id="Extension.extension:fregMetadata.extension">
+      <path value="Extension.extension.extension" />
       <slicing>
         <discriminator>
           <type value="value" />
@@ -2541,12 +2937,60 @@
         <rules value="open" />
       </slicing>
     </element>
-    <element id="Extension.extension:fregMetadata.value[x].extension:metadata">
-      <path value="Extension.extension.value[x].extension" />
+    <element id="Extension.extension:fregMetadata.Extension:metadata">
+      <path value="Extension.extension.extension" />
       <sliceName value="metadata" />
       <type>
         <code value="Extension" />
         <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
+      </type>
+    </element>
+    <element id="Extension.extension:fregMetadata.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="fregMetadata" />
+    </element>
+    <element id="Extension.extension:fregMetadata.value[x]">
+      <path value="Extension.extension.value[x]" />
+      <max value="0" />
+    </element>
+    <element id="Extension.extension:responsiblePartyNoId">
+      <path value="Extension.extension" />
+      <sliceName value="responsiblePartyNoId" />
+      <short value="The person responsible for the child" />
+      <definition value="The person holding the legal parenting responsibilty, identified by name, gender, birthdate and nationality of the person." />
+      <alias value="ansvarligUtenIdentifikator" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:responsiblePartyNoId.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="responsiblePartyNoId" />
+    </element>
+    <element id="Extension.extension:responsiblePartyNoId.value[x]:valueHumanName">
+      <path value="Extension.extension.valueHumanName" />
+      <sliceName value="valueHumanName" />
+      <type>
+        <code value="HumanName" />
+        <profile value="http://hl7.no/fhir/StructureDefinition/no-basis-HumanName" />
+      </type>
+    </element>
+    <element id="Extension.extension:subjectOfResponsibilityNoId">
+      <path value="Extension.extension" />
+      <sliceName value="subjectOfResponsibilityNoId" />
+      <short value="The child subject of parenting responsibilty" />
+      <definition value="The child that is subject of parenting responsibilty, identified by name, gender, birthdate and nationality of the person." />
+      <alias value="ansvarssubjektUtenIdentifikator" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:subjectOfResponsibilityNoId.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="subjectOfResponsibilityNoId" />
+    </element>
+    <element id="Extension.extension:subjectOfResponsibilityNoId.value[x]:valueHumanName">
+      <path value="Extension.extension.valueHumanName" />
+      <sliceName value="valueHumanName" />
+      <type>
+        <code value="HumanName" />
+        <profile value="http://hl7.no/fhir/StructureDefinition/no-basis-HumanName" />
       </type>
     </element>
     <element id="Extension.url">
