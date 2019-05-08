@@ -5,6 +5,7 @@
 	<title value="Requirements for Grunndata Person Service Interface"/>
 	<status value="draft"/>
 	<date value="2019-05-08"/>
+	<description value="Requirements for the Grunndata Person service provided by Direktoratet for e-helse"/>
 	<kind value="requirements"/>
 	<fhirVersion value="3.0.1"/>
 	<acceptUnknown value="both"/>
@@ -32,12 +33,14 @@
 			<searchParam>
 				<name value="identifier"/>
 				<type value="token"/>
-				<documentation value="Search on Person.identifier. GET [base]/Person?identifier=[value]"/>
+				<documentation value="Search on Person.identifier: 
+				*** 
+				~~~ GET [base]/Person?identifier=[value] ~~~"/>
 			</searchParam>
 			<searchParam>
 				<name value="name"/>
 				<type value="string"/>
-				<documentation value="GET [base]/Person?name=[value]"/>
+				<documentation value="Search on Person.name: *** ~~~ GET [base]/Person?name=[value] ~~~"/>
 			</searchParam>
 		</resource>
 	</rest>
