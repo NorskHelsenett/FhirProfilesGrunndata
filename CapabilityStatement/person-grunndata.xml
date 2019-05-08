@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CapabilityStatement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/GitRepo/FHIR/STU3/fhir-all-xsd/fhir-single.xsd">
+	<status value="draft"/>
+	<date value="2019-05-08"/>
+	<kind value="requirements"/>
+	<fhirVersion value="3.0.1"/>
+	<acceptUnknown value="both"/>
+	<format value="json"/>
+	<format value="xml"/>
+	<rest>
+		<mode value="server"/>
+		<resource>
+			<type value="Person"/>
+			<profile>
+				<reference value="http://ehelse.no/fhir/StructureDefinition/gd-Person"/>
+			</profile>
+			<interaction>
+				<code value="search-type"/>
+				<documentation value="Search for a specific Resource type on some specified filter criteria"/>
+			</interaction>
+			<interaction>
+				<code value="read"/>
+				<documentation value="Normal read operation."/>
+			</interaction>
+			<interaction>
+				<code value="vread"/>
+				<documentation value="Normal read operation on specific versions."/>
+			</interaction>
+			<searchParam>
+				<name value="identifier"/>
+				<type value="token"/>
+				<documentation value="Search on Person.identifier. GET [base]/Person?identifier=[value]"/>
+			</searchParam>
+			<searchParam>
+				<name value="name"/>
+				<type value="string"/>
+				<documentation value="GET [base]/Person?name=[value]"/>
+			</searchParam>
+		</resource>
+	</rest>
+</CapabilityStatement>
