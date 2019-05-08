@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CapabilityStatement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/GitRepo/FHIR/STU3/fhir-all-xsd/fhir-single.xsd">
+	<url value="http://ehelse.no/fhir/CapabilityStatement/gd-Person-Server-Requirements/v001"/>
+	<name value="gd-Person-Server-Requirements"/>
+	<title value="Requirements for Grunndata Person Service Interface"/>
 	<status value="draft"/>
 	<date value="2019-05-08"/>
 	<kind value="requirements"/>
