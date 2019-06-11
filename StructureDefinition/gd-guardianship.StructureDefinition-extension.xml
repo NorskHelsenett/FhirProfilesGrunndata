@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="gd-birth" />
-  <url value="http://ehelse.no/fhir/StructureDefinition/gd-birth" />
+  <id value="gd-guardianship" />
+  <url value="http://example.org/fhir/StructureDefinition/gd-guardianship" />
   <version value="0.1" />
-  <name value="gd-birth" />
-  <title value="Fødsel" />
+  <name value="GdGuardianship" />
   <status value="draft" />
-  <date value="2019-04-29" />
-  <description value="Fødsel gir opplysninger om personens fødsel helt uavhengig av om denne er født i Norge eller ikke. Fødsel i Norge gir tilleggsinformasjon om fødselen hvis den har skjedd i Norge og er ment for bruk av spesielt interesserte og er derfor skilt ut fra fødsel.&#xD;&#xA;Det finnes ikke historiske data for disse informasjonselementene fordi det skal finnes maksimum en sannhet for hvert informasjonselement - selv om denne kan være korrigert flere ganger." />
+  <date value="2019-06-11" />
+  <description value="Informasjon om Vergemaal eller fremtidsfullmakt fra FREG.&#xD;&#xA;&#xD;&#xA;vergemål: forpliktelse og myndighet som en verge har til å handle på vegne av en person som mangler evnen til selv å dra omsorg for seg og det vedkommende eier&#xD;&#xA;representant for enslig mindreårig asylsøker: en juridisk erstatter for foreldrene&#xD;&#xA;stadfestet fremtidsfullmakt: en fremtidsfullmakt som er stadfestet til å trå i kraft fra et ikrafttredelsestidspunkt&#xD;&#xA;Folkeregisteret skal ha løsning for å motta opplysninger om omsorgsovertagelse og vergemål fra relevante offentlige virksomheter, samt videre distribuere til aktører med tillatelse.&#xD;&#xA;Folkeregisteret skal gjøre det enklere enn i dag å identifisere relasjoner mellom verge og person som har fått oppnevnt verge.&#xD;&#xA;Egenskapen gyldighetstidspunkt angir ikrafttredelsestidspunktet (vedtaksdato i meldingen fra Statens Sivilrettsforvaltning).&#xD;&#xA;Egenskapen opphørstidspunkt angir når vergemålet ble opphørt/skal opphøres. &#xD;&#xA;Folkeregisteret benytter verge og vergehaver som felles overordnet begrepsnavn ifm. vergemål, representasjon for enslig mindreårig flyktning og fremtidsfullmakt selv om begrepsnavnene i de to sistnevnte er representant – enslig mindreårig flyktning og fullmektig – fullmaktsgiver." />
   <fhirVersion value="3.0.1" />
   <kind value="complex-type" />
   <abstract value="false" />
   <contextType value="resource" />
+  <context value="Patient" />
   <context value="Person" />
   <type value="Extension" />
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
@@ -19,16 +19,23 @@
   <snapshot>
     <element id="Extension">
       <path value="Extension" />
-      <short value="Fødsel" />
-      <definition value="Fødsel og FødselINorge fra FREG&#xD;&#xA;Dette er to relaterte egenskaper for en Folkeregisterperson. &#xD;&#xA;&#xD;&#xA;Fødsel gir opplysninger om personens fødsel helt uavhengig av om denne er født i Norge eller ikke. Fødsel i Norge gir tilleggsinformasjon om fødselen hvis den har skjedd i Norge og er ment for bruk av spesielt interesserte og er derfor skilt ut fra fødsel.&#xD;&#xA;Det finnes ikke historiske data for disse informasjonselementene fordi det skal finnes maksimum en sannhet for hvert informasjonselement - selv om denne kan være korrigert flere ganger." />
-      <comment value="The actual birthDate is given in the Person/Patient/RelatedPerson.birtDate element. The metadata from freg conserning the birtDate is always connecte to the gd-birth extension." />
-      <alias value="foedsel" />
-      <max value="1" />
+      <short value="Optional Extensions Element" />
+      <definition value="Informasjon om Vergemaal eller fremtidsfullmakt fra FREG.&#xD;&#xA;&#xD;&#xA;vergemål: forpliktelse og myndighet som en verge har til å handle på vegne av en person som mangler evnen til selv å dra omsorg for seg og det vedkommende eier&#xD;&#xA;representant for enslig mindreårig asylsøker: en juridisk erstatter for foreldrene&#xD;&#xA;stadfestet fremtidsfullmakt: en fremtidsfullmakt som er stadfestet til å trå i kraft fra et ikrafttredelsestidspunkt&#xD;&#xA;Folkeregisteret skal ha løsning for å motta opplysninger om omsorgsovertagelse og vergemål fra relevante offentlige virksomheter, samt videre distribuere til aktører med tillatelse.&#xD;&#xA;Folkeregisteret skal gjøre det enklere enn i dag å identifisere relasjoner mellom verge og person som har fått oppnevnt verge.&#xD;&#xA;Egenskapen gyldighetstidspunkt angir ikrafttredelsestidspunktet (vedtaksdato i meldingen fra Statens Sivilrettsforvaltning).&#xD;&#xA;Egenskapen opphørstidspunkt angir når vergemålet ble opphørt/skal opphøres. &#xD;&#xA;Folkeregisteret benytter verge og vergehaver som felles overordnet begrepsnavn ifm. vergemål, representasjon for enslig mindreårig flyktning og fremtidsfullmakt selv om begrepsnavnene i de to sistnevnte er representant – enslig mindreårig flyktning og fullmektig – fullmaktsgiver." />
+      <min value="0" />
+      <max value="*" />
       <base>
         <path value="Element" />
         <min value="0" />
         <max value="*" />
       </base>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
       <constraint>
         <key value="ext-1" />
         <severity value="error" />
@@ -36,6 +43,10 @@
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
       </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
@@ -119,16 +130,16 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:birthYear">
+    <element id="Extension.extension:guardianType">
       <path value="Extension.extension" />
-      <sliceName value="birthYear" />
-      <short value="Additional Content defined by implementations" />
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+      <sliceName value="guardianType" />
+      <short value="Vergemaaltype fra FREG" />
+      <definition value="beskrivelse av typen vergemål som tar utgangspunkt i omfang og kategori av vergehaver" />
       <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
       <alias value="extensions" />
       <alias value="user content" />
-      <alias value="fødselsår" />
-      <min value="1" />
+      <alias value="vergemåltype" />
+      <min value="0" />
       <max value="1" />
       <base>
         <path value="Element.extension" />
@@ -153,6 +164,10 @@
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
       </constraint>
+      <binding>
+        <strength value="required" />
+        <valueSetUri value="http://ehelse.no/fhir/ValueSet/gd-person-guardiantype-v05" />
+      </binding>
       <mapping>
         <identity value="rim" />
         <map value="n/a" />
@@ -162,7 +177,7 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:birthYear.id">
+    <element id="Extension.extension:guardianType.id">
       <path value="Extension.extension.id" />
       <representation value="xmlAttr" />
       <short value="xml:id (or equivalent in JSON)" />
@@ -191,7 +206,7 @@
         <map value="n/a" />
       </mapping>
     </element>
-    <element id="Extension.extension:birthYear.extension">
+    <element id="Extension.extension:guardianType.extension">
       <path value="Extension.extension.extension" />
       <slicing>
         <discriminator>
@@ -240,7 +255,7 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:birthYear.url">
+    <element id="Extension.extension:guardianType.url">
       <path value="Extension.extension.url" />
       <representation value="xmlAttr" />
       <short value="identifies the meaning of the extension" />
@@ -256,7 +271,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="birthYear" />
+      <fixedUri value="guardianType" />
       <condition value="ele-1" />
       <constraint>
         <key value="ele-1" />
@@ -274,13 +289,13 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:birthYear.value[x]:valueDate">
-      <path value="Extension.extension.valueDate" />
-      <sliceName value="valueDate" />
-      <short value="birthYear" />
-      <definition value="birthYear only the year part of the date is given, the actual birthDate is given in Person/Patient/RelatedPerson.birtDate element." />
+    <element id="Extension.extension:guardianType.value[x]:valueCoding">
+      <path value="Extension.extension.valueCoding" />
+      <sliceName value="valueCoding" />
+      <short value="Value of extension" />
+      <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
       <comment value="A stream of bytes, base64 encoded" />
-      <min value="1" />
+      <min value="0" />
       <max value="1" />
       <base>
         <path value="Extension.value[x]" />
@@ -288,7 +303,7 @@
         <max value="1" />
       </base>
       <type>
-        <code value="date" />
+        <code value="Coding" />
       </type>
       <condition value="ele-1" />
       <constraint>
@@ -307,15 +322,15 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:landOfBirth">
+    <element id="Extension.extension:office">
       <path value="Extension.extension" />
-      <sliceName value="landOfBirth" />
-      <short value="land of Birth" />
-      <definition value="landet en person er født som landkode (ISO 3166-1 alfa 3)&#xD;&#xA;Innholdet er en tre-bokstavs kode i majuskel format (store bokstaver) iht. ISO 3166-1 alfa 3" />
+      <sliceName value="office" />
+      <short value="embete som gjordet vedtaket fra FREG" />
+      <definition value="Name of the office that made approval in the case, from FREG.&#xD;&#xA;&#xD;&#xA;opplysning om hvilket embete som har gjort vedtak i vergemålssaken eller har stadfestet fremtidsfullmakten&#xD;&#xA;Verdi fra kodeliste over fylkesmannsembeter, f.eks. fylkesmannenITrøndelag" />
       <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
       <alias value="extensions" />
       <alias value="user content" />
-      <alias value="fødeland" />
+      <alias value="embete" />
       <min value="0" />
       <max value="1" />
       <base>
@@ -350,7 +365,7 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:landOfBirth.id">
+    <element id="Extension.extension:office.id">
       <path value="Extension.extension.id" />
       <representation value="xmlAttr" />
       <short value="xml:id (or equivalent in JSON)" />
@@ -379,7 +394,7 @@
         <map value="n/a" />
       </mapping>
     </element>
-    <element id="Extension.extension:landOfBirth.extension">
+    <element id="Extension.extension:office.extension">
       <path value="Extension.extension.extension" />
       <slicing>
         <discriminator>
@@ -428,7 +443,7 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:landOfBirth.url">
+    <element id="Extension.extension:office.url">
       <path value="Extension.extension.url" />
       <representation value="xmlAttr" />
       <short value="identifies the meaning of the extension" />
@@ -444,7 +459,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="landOfBirth" />
+      <fixedUri value="office" />
       <condition value="ele-1" />
       <constraint>
         <key value="ele-1" />
@@ -462,7 +477,7 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:landOfBirth.value[x]:valueString">
+    <element id="Extension.extension:office.value[x]:valueString">
       <path value="Extension.extension.valueString" />
       <sliceName value="valueString" />
       <short value="Value of extension" />
@@ -495,16 +510,16 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:placeOfBirth">
+    <element id="Extension.extension:guardian">
       <path value="Extension.extension" />
-      <sliceName value="placeOfBirth" />
-      <short value="place of birth" />
-      <definition value="sted i et land hvor personen er født&#xD;&#xA;- Personer som er født i Norge: navnet på kommunen på fødselstidspunktet - hvis det er lagret&#xD;&#xA;- Personer som er født i utlandet: type steder kan variere fra land til land. Vi skal se på muligheten for å etablere rutiner/systemstøtte for hvilke typer steder som skal kunne registreres for ulike land." />
+      <sliceName value="guardian" />
+      <short value="person som varetar umyndiges interesser og opptrer som rettslig representant på umyndiges vegne i saker" />
+      <definition value="person som varetar umyndiges interesser og opptrer som rettslig representant på umyndiges vegne i saker" />
       <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
       <alias value="extensions" />
       <alias value="user content" />
-      <alias value="fødested" />
-      <min value="0" />
+      <alias value="verge" />
+      <min value="1" />
       <max value="1" />
       <base>
         <path value="Element.extension" />
@@ -538,7 +553,7 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:placeOfBirth.id">
+    <element id="Extension.extension:guardian.id">
       <path value="Extension.extension.id" />
       <representation value="xmlAttr" />
       <short value="xml:id (or equivalent in JSON)" />
@@ -567,7 +582,7 @@
         <map value="n/a" />
       </mapping>
     </element>
-    <element id="Extension.extension:placeOfBirth.extension">
+    <element id="Extension.extension:guardian.extension">
       <path value="Extension.extension.extension" />
       <slicing>
         <discriminator>
@@ -616,8 +631,129 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:placeOfBirth.url">
-      <path value="Extension.extension.url" />
+    <element id="Extension.extension:guardian.extension:name">
+      <path value="Extension.extension.extension" />
+      <sliceName value="name" />
+      <short value="Personnavnet til en verge" />
+      <definition value="Personnavnet til en verge" />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <alias value="personnavn" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Element.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:guardian.extension:name.id">
+      <path value="Extension.extension.extension.id" />
+      <representation value="xmlAttr" />
+      <short value="xml:id (or equivalent in JSON)" />
+      <definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+      <comment value="Note that FHIR strings may not exceed 1MB in size" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Element.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="string" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:guardian.extension:name.extension">
+      <path value="Extension.extension.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <description value="Extensions are always sliced by (at least) url" />
+        <rules value="open" />
+      </slicing>
+      <short value="Additional Content defined by implementations" />
+      <definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="Element.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:guardian.extension:name.url">
+      <path value="Extension.extension.extension.url" />
       <representation value="xmlAttr" />
       <short value="identifies the meaning of the extension" />
       <definition value="Source of the definition for the extension code - a logical name or a URL." />
@@ -632,7 +768,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="placeOfBirth" />
+      <fixedUri value="name" />
       <condition value="ele-1" />
       <constraint>
         <key value="ele-1" />
@@ -650,8 +786,210 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:placeOfBirth.value[x]:valueString">
-      <path value="Extension.extension.valueString" />
+    <element id="Extension.extension:guardian.extension:name.value[x]:valueHumanName">
+      <path value="Extension.extension.extension.valueHumanName" />
+      <sliceName value="valueHumanName" />
+      <short value="Norwegian human name" />
+      <definition value="Defines the format of norwegian human name according to norwegian regulation (lov om personnavn)." />
+      <comment value="Names may be changed, or repudiated, or people may have different names in different contexts. Names may be divided into parts of different type that have variable significance depending on context, though the division into parts does not always matter. With personal names, the different parts may or may not be imbued with some implicit meaning; various cultures associate different importance with the name parts and the degree to which systems must care about name parts around the world varies widely." />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="Extension.value[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="HumanName" />
+        <profile value="http://hl7.no/fhir/StructureDefinition/no-basis-HumanName" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="v2" />
+        <map value="XPN" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="EN (actually, PN)" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="ProviderName" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:guardian.extension:identifier">
+      <path value="Extension.extension.extension" />
+      <sliceName value="identifier" />
+      <short value="Folkeregisteridentifikatoren til vergen hvis denne finnes i Folkeregisteret" />
+      <definition value="Folkeregisteridentifikatoren til vergen hvis denne finnes i Folkeregisteret. Vergen kan være uten tilknytning til Norge og egenskapen vil være uten verdi.&#xD;&#xA;&#xD;&#xA;Fødselsnummer: personidentifikasjonsnummer for de som er, eller har vært, bosatt i Norge, samt personer som er &quot;ikke bosatt&quot;&#xD;&#xA;d-nummer: identifikasjonsnummer som tildeles personer med midlertidig tilknytning til Norge, det vil si som ikke er bosatt i Norge&#xD;&#xA;&#xD;&#xA;" />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <alias value="fødselsEllerDNummer" />
+      <alias value="Folkeregisteridentifikatoren " />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Element.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:guardian.extension:identifier.id">
+      <path value="Extension.extension.extension.id" />
+      <representation value="xmlAttr" />
+      <short value="xml:id (or equivalent in JSON)" />
+      <definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+      <comment value="Note that FHIR strings may not exceed 1MB in size" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Element.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="string" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:guardian.extension:identifier.extension">
+      <path value="Extension.extension.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <description value="Extensions are always sliced by (at least) url" />
+        <rules value="open" />
+      </slicing>
+      <short value="Additional Content defined by implementations" />
+      <definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="Element.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:guardian.extension:identifier.url">
+      <path value="Extension.extension.extension.url" />
+      <representation value="xmlAttr" />
+      <short value="identifies the meaning of the extension" />
+      <definition value="Source of the definition for the extension code - a logical name or a URL." />
+      <comment value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="Extension.url" />
+        <min value="1" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="uri" />
+      </type>
+      <fixedUri value="identifier" />
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:guardian.extension:identifier.value[x]:valueString">
+      <path value="Extension.extension.extension.valueString" />
       <sliceName value="valueString" />
       <short value="Value of extension" />
       <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
@@ -683,15 +1021,15 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:placeOfBirthDistrict">
-      <path value="Extension.extension" />
-      <sliceName value="placeOfBirthDistrict" />
-      <short value="District in Norway where the person was born" />
-      <definition value="kommunen barnet faktisk ble født i&#xD;&#xA;Innholdet er kommunenummeret på fødselstidspunktet.&#xD;&#xA;Denne informasjonen ligger under fødsel og ikke fødselINorge fordi det da er lettere tilgjengelig i normale oppslag." />
+    <element id="Extension.extension:guardian.extension:scope">
+      <path value="Extension.extension.extension" />
+      <sliceName value="scope" />
+      <short value="vergemålets omfangsområde for representasjon for vergehaver" />
+      <definition value="vergemålets omfangsområde for representasjon for vergehaver" />
       <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
       <alias value="extensions" />
       <alias value="user content" />
-      <alias value="fødekommuneINorge" />
+      <alias value="(vergemåls)omfang" />
       <min value="0" />
       <max value="1" />
       <base>
@@ -717,6 +1055,10 @@
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
       </constraint>
+      <binding>
+        <strength value="required" />
+        <valueSetUri value="http://ehelse.no/fhir/ValueSet/gd-person-guardianscope-v05" />
+      </binding>
       <mapping>
         <identity value="rim" />
         <map value="n/a" />
@@ -726,8 +1068,8 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:placeOfBirthDistrict.id">
-      <path value="Extension.extension.id" />
+    <element id="Extension.extension:guardian.extension:scope.id">
+      <path value="Extension.extension.extension.id" />
       <representation value="xmlAttr" />
       <short value="xml:id (or equivalent in JSON)" />
       <definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
@@ -755,8 +1097,8 @@
         <map value="n/a" />
       </mapping>
     </element>
-    <element id="Extension.extension:placeOfBirthDistrict.extension">
-      <path value="Extension.extension.extension" />
+    <element id="Extension.extension:guardian.extension:scope.extension">
+      <path value="Extension.extension.extension.extension" />
       <slicing>
         <discriminator>
           <type value="value" />
@@ -804,8 +1146,8 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:placeOfBirthDistrict.url">
-      <path value="Extension.extension.url" />
+    <element id="Extension.extension:guardian.extension:scope.url">
+      <path value="Extension.extension.extension.url" />
       <representation value="xmlAttr" />
       <short value="identifies the meaning of the extension" />
       <definition value="Source of the definition for the extension code - a logical name or a URL." />
@@ -820,7 +1162,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="placeOfBirthDistrict" />
+      <fixedUri value="scope" />
       <condition value="ele-1" />
       <constraint>
         <key value="ele-1" />
@@ -838,9 +1180,9 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:placeOfBirthDistrict.value[x]:valueString">
-      <path value="Extension.extension.valueString" />
-      <sliceName value="valueString" />
+    <element id="Extension.extension:guardian.extension:scope.value[x]:valueCoding">
+      <path value="Extension.extension.extension.valueCoding" />
+      <sliceName value="valueCoding" />
       <short value="Value of extension" />
       <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
       <comment value="A stream of bytes, base64 encoded" />
@@ -852,7 +1194,7 @@
         <max value="1" />
       </base>
       <type>
-        <code value="string" />
+        <code value="Coding" />
       </type>
       <condition value="ele-1" />
       <constraint>
@@ -871,172 +1213,7 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:fregMetadata">
-      <path value="Extension.extension" />
-      <sliceName value="fregMetadata" />
-      <short value="Additional Content defined by implementations" />
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
-      <alias value="extensions" />
-      <alias value="user content" />
-      <min value="0" />
-      <max value="1" />
-      <base>
-        <path value="Element.extension" />
-        <min value="0" />
-        <max value="*" />
-      </base>
-      <type>
-        <code value="Extension" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-      </constraint>
-      <constraint>
-        <key value="ext-1" />
-        <severity value="error" />
-        <human value="Must have either extensions or value[x], not both" />
-        <expression value="extension.exists() != value.exists()" />
-        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-      </constraint>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
-    </element>
-    <element id="Extension.extension:fregMetadata.id">
-      <path value="Extension.extension.id" />
-      <representation value="xmlAttr" />
-      <short value="xml:id (or equivalent in JSON)" />
-      <definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
-      <comment value="Note that FHIR strings may not exceed 1MB in size" />
-      <min value="0" />
-      <max value="1" />
-      <base>
-        <path value="Element.id" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="string" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-      </constraint>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-    </element>
-    <element id="Extension.extension:fregMetadata.extension">
-      <path value="Extension.extension.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <description value="Extensions are always sliced by (at least) url" />
-        <rules value="open" />
-      </slicing>
-      <short value="Additional Content defined by implementations" />
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
-      <alias value="extensions" />
-      <alias value="user content" />
-      <min value="0" />
-      <max value="*" />
-      <base>
-        <path value="Element.extension" />
-        <min value="0" />
-        <max value="*" />
-      </base>
-      <type>
-        <code value="Extension" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-      </constraint>
-      <constraint>
-        <key value="ext-1" />
-        <severity value="error" />
-        <human value="Must have either extensions or value[x], not both" />
-        <expression value="extension.exists() != value.exists()" />
-        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-      </constraint>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
-    </element>
-    <element id="Extension.extension:fregMetadata.extension:metadata">
-      <path value="Extension.extension.extension" />
-      <sliceName value="metadata" />
-      <short value="registermetadata fra folkeregisteret" />
-      <definition value="Registermetadata describes metadata about resources available from the norwegian person index (folkeregisteret), all resources containing metadata from folkeregisteret will include registermetadata" />
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
-      <alias value="extensions" />
-      <alias value="user content" />
-      <alias value="registermetadata" />
-      <alias value="RegistermetadataMedGyldighet" />
-      <min value="0" />
-      <max value="*" />
-      <base>
-        <path value="Element.extension" />
-        <min value="0" />
-        <max value="*" />
-      </base>
-      <type>
-        <code value="Extension" />
-        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-      </constraint>
-      <constraint>
-        <key value="ext-1" />
-        <severity value="error" />
-        <human value="Must have either extensions or value[x], not both" />
-        <expression value="extension.exists() != value.exists()" />
-        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-      </constraint>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
-    </element>
-    <element id="Extension.extension:fregMetadata.url">
+    <element id="Extension.extension:guardian.url">
       <path value="Extension.extension.url" />
       <representation value="xmlAttr" />
       <short value="identifies the meaning of the extension" />
@@ -1052,7 +1229,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="fregMetadata" />
+      <fixedUri value="guardian" />
       <condition value="ele-1" />
       <constraint>
         <key value="ele-1" />
@@ -1070,7 +1247,7 @@
         <map value="N/A" />
       </mapping>
     </element>
-    <element id="Extension.extension:fregMetadata.value[x]">
+    <element id="Extension.extension:guardian.value[x]">
       <path value="Extension.extension.value[x]" />
       <short value="Value of extension" />
       <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
@@ -1213,6 +1390,350 @@
         <map value="N/A" />
       </mapping>
     </element>
+    <element id="Extension.extension:fregMetadata">
+      <path value="Extension.extension" />
+      <sliceName value="fregMetadata" />
+      <short value="Additional Content defined by implementations" />
+      <definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Element.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:fregMetadata.id">
+      <path value="Extension.extension.id" />
+      <representation value="xmlAttr" />
+      <short value="xml:id (or equivalent in JSON)" />
+      <definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+      <comment value="Note that FHIR strings may not exceed 1MB in size" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Element.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="string" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:fregMetadata.extension">
+      <path value="Extension.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <description value="Extensions are always sliced by (at least) url" />
+        <rules value="open" />
+      </slicing>
+      <short value="Additional Content defined by implementations" />
+      <definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="Element.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:fregMetadata.url">
+      <path value="Extension.extension.url" />
+      <representation value="xmlAttr" />
+      <short value="identifies the meaning of the extension" />
+      <definition value="Source of the definition for the extension code - a logical name or a URL." />
+      <comment value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="Extension.url" />
+        <min value="1" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="uri" />
+      </type>
+      <fixedUri value="fregMetadata" />
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:fregMetadata.value[x]">
+      <path value="Extension.extension.value[x]" />
+      <short value="Value of extension" />
+      <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+      <comment value="A stream of bytes, base64 encoded" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Extension.value[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="base64Binary" />
+      </type>
+      <type>
+        <code value="boolean" />
+      </type>
+      <type>
+        <code value="code" />
+      </type>
+      <type>
+        <code value="date" />
+      </type>
+      <type>
+        <code value="dateTime" />
+      </type>
+      <type>
+        <code value="decimal" />
+      </type>
+      <type>
+        <code value="id" />
+      </type>
+      <type>
+        <code value="instant" />
+      </type>
+      <type>
+        <code value="integer" />
+      </type>
+      <type>
+        <code value="markdown" />
+      </type>
+      <type>
+        <code value="oid" />
+      </type>
+      <type>
+        <code value="positiveInt" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+      <type>
+        <code value="time" />
+      </type>
+      <type>
+        <code value="unsignedInt" />
+      </type>
+      <type>
+        <code value="uri" />
+      </type>
+      <type>
+        <code value="Address" />
+      </type>
+      <type>
+        <code value="Age" />
+      </type>
+      <type>
+        <code value="Annotation" />
+      </type>
+      <type>
+        <code value="Attachment" />
+      </type>
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <type>
+        <code value="Coding" />
+      </type>
+      <type>
+        <code value="ContactPoint" />
+      </type>
+      <type>
+        <code value="Count" />
+      </type>
+      <type>
+        <code value="Distance" />
+      </type>
+      <type>
+        <code value="Duration" />
+      </type>
+      <type>
+        <code value="HumanName" />
+      </type>
+      <type>
+        <code value="Identifier" />
+      </type>
+      <type>
+        <code value="Money" />
+      </type>
+      <type>
+        <code value="Period" />
+      </type>
+      <type>
+        <code value="Quantity" />
+      </type>
+      <type>
+        <code value="Range" />
+      </type>
+      <type>
+        <code value="Ratio" />
+      </type>
+      <type>
+        <code value="Reference" />
+      </type>
+      <type>
+        <code value="SampledData" />
+      </type>
+      <type>
+        <code value="Signature" />
+      </type>
+      <type>
+        <code value="Timing" />
+      </type>
+      <type>
+        <code value="Meta" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
+    <element id="Extension.extension:metadata.value[x].extension">
+      <path value="Extension.extension.extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Extension.extension:fregMetadata.value[x].extension:metadata">
+      <path value="Extension.extension.extension" />
+      <sliceName value="metadata" />
+      <short value="registermetadata fra folkeregisteret" />
+      <definition value="Registermetadata describes metadata about resources available from the norwegian person index (folkeregisteret), all resources containing metadata from folkeregisteret will include registermetadata" />
+      <alias value="registermetadata" />
+      <alias value="RegistermetadataMedGyldighet" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
     <element id="Extension.url">
       <path value="Extension.url" />
       <representation value="xmlAttr" />
@@ -1229,7 +1750,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://ehelse.no/fhir/StructureDefinition/gd-birth" />
+      <fixedUri value="http://example.org/fhir/StructureDefinition/gd-guardianship" />
       <condition value="ele-1" />
       <constraint>
         <key value="ele-1" />
@@ -1394,11 +1915,7 @@
   <differential>
     <element id="Extension">
       <path value="Extension" />
-      <short value="Fødsel" />
-      <definition value="Fødsel og FødselINorge fra FREG&#xD;&#xA;Dette er to relaterte egenskaper for en Folkeregisterperson. &#xD;&#xA;&#xD;&#xA;Fødsel gir opplysninger om personens fødsel helt uavhengig av om denne er født i Norge eller ikke. Fødsel i Norge gir tilleggsinformasjon om fødselen hvis den har skjedd i Norge og er ment for bruk av spesielt interesserte og er derfor skilt ut fra fødsel.&#xD;&#xA;Det finnes ikke historiske data for disse informasjonselementene fordi det skal finnes maksimum en sannhet for hvert informasjonselement - selv om denne kan være korrigert flere ganger." />
-      <comment value="The actual birthDate is given in the Person/Patient/RelatedPerson.birtDate element. The metadata from freg conserning the birtDate is always connecte to the gd-birth extension." />
-      <alias value="foedsel" />
-      <max value="1" />
+      <definition value="Informasjon om Vergemaal eller fremtidsfullmakt fra FREG.&#xD;&#xA;&#xD;&#xA;vergemål: forpliktelse og myndighet som en verge har til å handle på vegne av en person som mangler evnen til selv å dra omsorg for seg og det vedkommende eier&#xD;&#xA;representant for enslig mindreårig asylsøker: en juridisk erstatter for foreldrene&#xD;&#xA;stadfestet fremtidsfullmakt: en fremtidsfullmakt som er stadfestet til å trå i kraft fra et ikrafttredelsestidspunkt&#xD;&#xA;Folkeregisteret skal ha løsning for å motta opplysninger om omsorgsovertagelse og vergemål fra relevante offentlige virksomheter, samt videre distribuere til aktører med tillatelse.&#xD;&#xA;Folkeregisteret skal gjøre det enklere enn i dag å identifisere relasjoner mellom verge og person som har fått oppnevnt verge.&#xD;&#xA;Egenskapen gyldighetstidspunkt angir ikrafttredelsestidspunktet (vedtaksdato i meldingen fra Statens Sivilrettsforvaltning).&#xD;&#xA;Egenskapen opphørstidspunkt angir når vergemålet ble opphørt/skal opphøres. &#xD;&#xA;Folkeregisteret benytter verge og vergehaver som felles overordnet begrepsnavn ifm. vergemål, representasjon for enslig mindreårig flyktning og fremtidsfullmakt selv om begrepsnavnene i de to sistnevnte er representant – enslig mindreårig flyktning og fullmektig – fullmaktsgiver." />
     </element>
     <element id="Extension.extension">
       <path value="Extension.extension" />
@@ -1410,90 +1927,58 @@
         <rules value="open" />
       </slicing>
     </element>
-    <element id="Extension.extension:birthYear">
+    <element id="Extension.extension:guardianType">
       <path value="Extension.extension" />
-      <sliceName value="birthYear" />
-      <alias value="fødselsår" />
+      <sliceName value="guardianType" />
+      <short value="Vergemaaltype fra FREG" />
+      <definition value="beskrivelse av typen vergemål som tar utgangspunkt i omfang og kategori av vergehaver" />
+      <alias value="vergemåltype" />
+      <max value="1" />
+      <binding>
+        <strength value="required" />
+        <valueSetUri value="http://ehelse.no/fhir/ValueSet/gd-person-guardiantype-v05" />
+      </binding>
+    </element>
+    <element id="Extension.extension:guardianType.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="guardianType" />
+    </element>
+    <element id="Extension.extension:guardianType.value[x]:valueCoding">
+      <path value="Extension.extension.valueCoding" />
+      <sliceName value="valueCoding" />
+      <type>
+        <code value="Coding" />
+      </type>
+    </element>
+    <element id="Extension.extension:office">
+      <path value="Extension.extension" />
+      <sliceName value="office" />
+      <short value="embete som gjordet vedtaket fra FREG" />
+      <definition value="Name of the office that made approval in the case, from FREG.&#xD;&#xA;&#xD;&#xA;opplysning om hvilket embete som har gjort vedtak i vergemålssaken eller har stadfestet fremtidsfullmakten&#xD;&#xA;Verdi fra kodeliste over fylkesmannsembeter, f.eks. fylkesmannenITrøndelag" />
+      <alias value="embete" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:office.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="office" />
+    </element>
+    <element id="Extension.extension:office.value[x]:valueString">
+      <path value="Extension.extension.valueString" />
+      <sliceName value="valueString" />
+      <type>
+        <code value="string" />
+      </type>
+    </element>
+    <element id="Extension.extension:guardian">
+      <path value="Extension.extension" />
+      <sliceName value="guardian" />
+      <short value="person som varetar umyndiges interesser og opptrer som rettslig representant på umyndiges vegne i saker" />
+      <definition value="person som varetar umyndiges interesser og opptrer som rettslig representant på umyndiges vegne i saker" />
+      <alias value="verge" />
       <min value="1" />
       <max value="1" />
     </element>
-    <element id="Extension.extension:birthYear.url">
-      <path value="Extension.extension.url" />
-      <fixedUri value="birthYear" />
-    </element>
-    <element id="Extension.extension:birthYear.value[x]:valueDate">
-      <path value="Extension.extension.valueDate" />
-      <sliceName value="valueDate" />
-      <short value="birthYear" />
-      <definition value="birthYear only the year part of the date is given, the actual birthDate is given in Person/Patient/RelatedPerson.birtDate element." />
-      <min value="1" />
-      <type>
-        <code value="date" />
-      </type>
-    </element>
-    <element id="Extension.extension:landOfBirth">
-      <path value="Extension.extension" />
-      <sliceName value="landOfBirth" />
-      <short value="land of Birth" />
-      <definition value="landet en person er født som landkode (ISO 3166-1 alfa 3)&#xD;&#xA;Innholdet er en tre-bokstavs kode i majuskel format (store bokstaver) iht. ISO 3166-1 alfa 3" />
-      <alias value="fødeland" />
-      <max value="1" />
-    </element>
-    <element id="Extension.extension:landOfBirth.url">
-      <path value="Extension.extension.url" />
-      <fixedUri value="landOfBirth" />
-    </element>
-    <element id="Extension.extension:landOfBirth.value[x]:valueString">
-      <path value="Extension.extension.valueString" />
-      <sliceName value="valueString" />
-      <type>
-        <code value="string" />
-      </type>
-    </element>
-    <element id="Extension.extension:placeOfBirth">
-      <path value="Extension.extension" />
-      <sliceName value="placeOfBirth" />
-      <short value="place of birth" />
-      <definition value="sted i et land hvor personen er født&#xD;&#xA;- Personer som er født i Norge: navnet på kommunen på fødselstidspunktet - hvis det er lagret&#xD;&#xA;- Personer som er født i utlandet: type steder kan variere fra land til land. Vi skal se på muligheten for å etablere rutiner/systemstøtte for hvilke typer steder som skal kunne registreres for ulike land." />
-      <alias value="fødested" />
-      <max value="1" />
-    </element>
-    <element id="Extension.extension:placeOfBirth.url">
-      <path value="Extension.extension.url" />
-      <fixedUri value="placeOfBirth" />
-    </element>
-    <element id="Extension.extension:placeOfBirth.value[x]:valueString">
-      <path value="Extension.extension.valueString" />
-      <sliceName value="valueString" />
-      <type>
-        <code value="string" />
-      </type>
-    </element>
-    <element id="Extension.extension:placeOfBirthDistrict">
-      <path value="Extension.extension" />
-      <sliceName value="placeOfBirthDistrict" />
-      <short value="District in Norway where the person was born" />
-      <definition value="kommunen barnet faktisk ble født i&#xD;&#xA;Innholdet er kommunenummeret på fødselstidspunktet.&#xD;&#xA;Denne informasjonen ligger under fødsel og ikke fødselINorge fordi det da er lettere tilgjengelig i normale oppslag." />
-      <alias value="fødekommuneINorge" />
-      <max value="1" />
-    </element>
-    <element id="Extension.extension:placeOfBirthDistrict.url">
-      <path value="Extension.extension.url" />
-      <fixedUri value="placeOfBirthDistrict" />
-    </element>
-    <element id="Extension.extension:placeOfBirthDistrict.value[x]:valueString">
-      <path value="Extension.extension.valueString" />
-      <sliceName value="valueString" />
-      <type>
-        <code value="string" />
-      </type>
-    </element>
-    <element id="Extension.extension:fregMetadata">
-      <path value="Extension.extension" />
-      <sliceName value="fregMetadata" />
-      <max value="1" />
-    </element>
-    <element id="Extension.extension:fregMetadata.extension">
+    <element id="Extension.extension:guardian.extension">
       <path value="Extension.extension.extension" />
       <slicing>
         <discriminator>
@@ -1503,25 +1988,107 @@
         <rules value="open" />
       </slicing>
     </element>
-    <element id="Extension.extension:fregMetadata.extension:metadata">
+    <element id="Extension.extension:guardian.extension:name">
       <path value="Extension.extension.extension" />
+      <sliceName value="name" />
+      <short value="Personnavnet til en verge" />
+      <definition value="Personnavnet til en verge" />
+      <alias value="personnavn" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:guardian.extension:name.url">
+      <path value="Extension.extension.extension.url" />
+      <fixedUri value="name" />
+    </element>
+    <element id="Extension.extension:guardian.extension:name.value[x]:valueHumanName">
+      <path value="Extension.extension.extension.valueHumanName" />
+      <sliceName value="valueHumanName" />
+      <type>
+        <code value="HumanName" />
+        <profile value="http://hl7.no/fhir/StructureDefinition/no-basis-HumanName" />
+      </type>
+    </element>
+    <element id="Extension.extension:guardian.extension:identifier">
+      <path value="Extension.extension.extension" />
+      <sliceName value="identifier" />
+      <short value="Folkeregisteridentifikatoren til vergen hvis denne finnes i Folkeregisteret" />
+      <definition value="Folkeregisteridentifikatoren til vergen hvis denne finnes i Folkeregisteret. Vergen kan være uten tilknytning til Norge og egenskapen vil være uten verdi.&#xD;&#xA;&#xD;&#xA;Fødselsnummer: personidentifikasjonsnummer for de som er, eller har vært, bosatt i Norge, samt personer som er &quot;ikke bosatt&quot;&#xD;&#xA;d-nummer: identifikasjonsnummer som tildeles personer med midlertidig tilknytning til Norge, det vil si som ikke er bosatt i Norge&#xD;&#xA;&#xD;&#xA;" />
+      <alias value="fødselsEllerDNummer" />
+      <alias value="Folkeregisteridentifikatoren " />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:guardian.extension:identifier.url">
+      <path value="Extension.extension.extension.url" />
+      <fixedUri value="identifier" />
+    </element>
+    <element id="Extension.extension:guardian.extension:identifier.value[x]:valueString">
+      <path value="Extension.extension.extension.valueString" />
+      <sliceName value="valueString" />
+      <type>
+        <code value="string" />
+      </type>
+    </element>
+    <element id="Extension.extension:guardian.extension:scope">
+      <path value="Extension.extension.extension" />
+      <sliceName value="scope" />
+      <short value="vergemålets omfangsområde for representasjon for vergehaver" />
+      <definition value="vergemålets omfangsområde for representasjon for vergehaver" />
+      <alias value="(vergemåls)omfang" />
+      <max value="1" />
+      <binding>
+        <strength value="required" />
+        <valueSetUri value="http://ehelse.no/fhir/ValueSet/gd-person-guardianscope-v05" />
+      </binding>
+    </element>
+    <element id="Extension.extension:guardian.extension:scope.url">
+      <path value="Extension.extension.extension.url" />
+      <fixedUri value="scope" />
+    </element>
+    <element id="Extension.extension:guardian.extension:scope.value[x]:valueCoding">
+      <path value="Extension.extension.extension.valueCoding" />
+      <sliceName value="valueCoding" />
+      <type>
+        <code value="Coding" />
+      </type>
+    </element>
+    <element id="Extension.extension:guardian.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="guardian" />
+    </element>
+    <element id="Extension.extension:guardian.value[x]">
+      <path value="Extension.extension.value[x]" />
+      <max value="0" />
+    </element>
+    <element id="Extension.extension:fregMetadata">
+      <path value="Extension.extension" />
+      <sliceName value="fregMetadata" />
+      <max value="1" />
+    </element>
+    <element id="Extension.extension:fregMetadata.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="fregMetadata" />
+    </element>
+    <element id="Extension.extension:metadata.value[x].extension">
+      <path value="Extension.extension.value[x].extension" />
+      <slicing>
+        <discriminator>
+          <type value="value" />
+          <path value="url" />
+        </discriminator>
+        <rules value="open" />
+      </slicing>
+    </element>
+    <element id="Extension.extension:fregMetadata.value[x].extension:metadata">
+      <path value="Extension.extension.value[x].extension" />
       <sliceName value="metadata" />
       <type>
         <code value="Extension" />
         <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
       </type>
     </element>
-    <element id="Extension.extension:fregMetadata.url">
-      <path value="Extension.extension.url" />
-      <fixedUri value="fregMetadata" />
-    </element>
-    <element id="Extension.extension:fregMetadata.value[x]">
-      <path value="Extension.extension.value[x]" />
-      <max value="0" />
-    </element>
     <element id="Extension.url">
       <path value="Extension.url" />
-      <fixedUri value="http://ehelse.no/fhir/StructureDefinition/gd-birth" />
+      <fixedUri value="http://example.org/fhir/StructureDefinition/gd-guardianship" />
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]" />
