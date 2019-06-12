@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="gd-freg-name" />
-  <url value="http://ehelse.no/fhir/StructureDefinition/gd-freg-name" />
-  <version value="0.1" />
-  <name value="gd-freg-name" />
+  <id value="gd-additional-humanname" />
+  <url value="http://ehelse.no/fhir/StructureDefinition/gd-additional-humanname" />
+  <version value="0.2" />
+  <name value="gd-additional-humanname" />
   <status value="draft" />
-  <date value="2019-04-11" />
+  <date value="2019-06-12" />
   <description value="metadata about human name from FREG (folkeregisterpersonnavn) describes metadata about HumanName available from the norwegian person index (folkeregisteret, freg)" />
   <fhirVersion value="3.0.1" />
   <kind value="complex-type" />
@@ -21,22 +21,6 @@
       <short value="metadata about human name" />
       <definition value="metadata about human name from FREG (folkeregisterpersonnavn) describes metadata about HumanName available from the norwegian person index (folkeregisteret, freg)" />
       <alias value="folkeregisterpersonnavn" />
-      <base>
-        <path value="Element" />
-        <min value="0" />
-        <max value="*" />
-      </base>
-      <constraint>
-        <key value="ext-1" />
-        <severity value="error" />
-        <human value="Must have either extensions or value[x], not both" />
-        <expression value="extension.exists() != value.exists()" />
-        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-      </constraint>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
     </element>
     <element id="Extension.extension">
       <path value="Extension.extension" />
@@ -71,7 +55,7 @@
       <path value="Extension.extension" />
       <sliceName value="originalName" />
       <short value="originaltNavn fra FREG" />
-      <definition value="personens navn iht. godkjent identifikasjonsdokument ved opprettelse av en folkeregisterperson i Folkeregisteret&#xD;&#xA;&#xD;&#xA;Dette er et nytt felt i Folkeregisteret og vil bli benyttet tidligst etter at Registeret er master.&#xD;&#xA;&#xD;&#xA;Når Registeret er master så kan det bli benyttet som følger:&#xD;&#xA;Dette navnet vil bli skrevet på originalt tegnsett fra identifikasjonsdokumentet. Dette vil bli støttet av tegnsettet ISO 10646 lagret på UTF-8 format og vi kan derfor i praksis lagre alle verdens tegn.&#xD;&#xA;Denne datatypen inneholder fornavn, mellomnavn og etternavn, men reglene for innhold etter Navneloven gjelder ikke for utenlandske navn på original form.&#xD;&#xA;" />
+      <definition value="personens navn iht. godkjent identifikasjonsdokument ved opprettelse av en folkeregisterperson i Folkeregisteret&#xD;&#xA;&#xD;&#xA;Dette er et nytt felt i Folkeregisteret og vil bli benyttet tidligst etter at Registeret er master.&#xD;&#xA;&#xD;&#xA;Når Registeret er master så kan det bli benyttet som følger:&#xD;&#xA;Dette navnet vil bli skrevet på originalt tegnsett fra identifikasjonsdokumentet. Dette vil bli støttet av tegnsettet ISO 10646 lagret på UTF-8 format og vi kan derfor i praksis lagre alle verdens tegn.&#xD;&#xA;Denne datatypen inneholder fornavn, mellomnavn og etternavn, men reglene for innhold etter Navneloven gjelder ikke for utenlandske navn på original form." />
       <alias value="originaltNavn" />
       <max value="1" />
     </element>
@@ -88,7 +72,7 @@
     </element>
     <element id="Extension.url">
       <path value="Extension.url" />
-      <fixedUri value="http://ehelse.no/fhir/StructureDefinition/gd-freg-name" />
+      <fixedUri value="http://ehelse.no/fhir/StructureDefinition/gd-additional-humanname" />
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]" />

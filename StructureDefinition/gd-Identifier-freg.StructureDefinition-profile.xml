@@ -38,11 +38,12 @@
     <element id="Identifier.extension:fregStatus">
       <path value="Identifier.extension" />
       <sliceName value="fregStatus" />
+      <min value="1" />
+      <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-freg-person-identifier-status" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-person-identifier-status" />
       </type>
-      <mustSupport value="true" />
     </element>
     <element id="Identifier.use">
       <path value="Identifier.use" />

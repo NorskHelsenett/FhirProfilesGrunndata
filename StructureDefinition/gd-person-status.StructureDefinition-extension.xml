@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="gd-freg-person-status" />
-  <url value="http://ehelse.no/fhir/StructureDefinition/gd-freg-person-status" />
+  <id value="gd-person-status" />
+  <url value="http://ehelse.no/fhir/StructureDefinition/gd-person-status" />
   <version value="0.1" />
-  <name value="gd-freg-person-status" />
+  <name value="gd-person-status" />
   <status value="draft" />
   <date value="2019-04-24" />
   <description value="Status of a person from FREG. (bosatt, utflyttet etc)" />
@@ -38,6 +38,7 @@
       <path value="Extension.extension" />
       <sliceName value="fregPersonStatus" />
       <alias value="Folkeregisterpersonstatus" />
+      <alias value="Personstatus" />
       <min value="1" />
       <max value="1" />
     </element>
@@ -64,12 +65,8 @@
       <sliceName value="fregMetadata" />
       <max value="1" />
     </element>
-    <element id="Extension.extension:fregMetadata.url">
-      <path value="Extension.extension.url" />
-      <fixedUri value="fregMetadata" />
-    </element>
-    <element id="Extension.extension:fregMetadata.value[x].extension">
-      <path value="Extension.extension.value[x].extension" />
+    <element id="Extension.extension:fregMetadata.extension">
+      <path value="Extension.extension.extension" />
       <slicing>
         <discriminator>
           <type value="value" />
@@ -78,17 +75,25 @@
         <rules value="open" />
       </slicing>
     </element>
-    <element id="Extension.extension:fregMetadata.value[x].extension:metadata">
-      <path value="Extension.extension.value[x].extension" />
+    <element id="Extension.extension:fregMetadata.extension:metadata">
+      <path value="Extension.extension.extension" />
       <sliceName value="metadata" />
       <type>
         <code value="Extension" />
         <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
       </type>
     </element>
+    <element id="Extension.extension:fregMetadata.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="fregMetadata" />
+    </element>
+    <element id="Extension.extension:fregMetadata.value[x]">
+      <path value="Extension.extension.value[x]" />
+      <max value="0" />
+    </element>
     <element id="Extension.url">
       <path value="Extension.url" />
-      <fixedUri value="http://ehelse.no/fhir/StructureDefinition/gd-freg-person-status" />
+      <fixedUri value="http://ehelse.no/fhir/StructureDefinition/gd-person-status" />
     </element>
     <element id="Extension.value[x]">
       <path value="Extension.value[x]" />

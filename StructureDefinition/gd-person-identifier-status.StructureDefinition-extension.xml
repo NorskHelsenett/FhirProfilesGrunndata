@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="gd-freg-person-identifier-status" />
-  <url value="http://ehelse.no/fhir/StructureDefinition/gd-freg-person-identifier-status" />
+  <id value="gd-person-identifier-status" />
+  <url value="http://ehelse.no/fhir/StructureDefinition/gd-person-identifier-status" />
   <version value="0.2" />
-  <name value="gd-freg-person-identifier-status" />
+  <name value="gd-person-identifier-status" />
   <status value="draft" />
   <date value="2019-04-23" />
   <description value="The status of a person identifier from FREG" />
@@ -21,12 +21,13 @@
       <short value="The status of a person identifier from FREG" />
       <definition value="The status of a person identifier from FREG" />
       <alias value="Identifikatorstatuskode" />
+      <alias value="status" />
       <min value="1" />
       <max value="1" />
     </element>
     <element id="Extension.url">
       <path value="Extension.url" />
-      <fixedUri value="http://ehelse.no/fhir/StructureDefinition/gd-freg-person-identifier-status" />
+      <fixedUri value="http://ehelse.no/fhir/StructureDefinition/gd-person-identifier-status" />
     </element>
     <element id="Extension.value[x]:valueCode">
       <path value="Extension.valueCode" />

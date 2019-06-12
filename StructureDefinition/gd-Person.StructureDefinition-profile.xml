@@ -81,14 +81,6 @@
         <rules value="open" />
       </slicing>
     </element>
-    <element id="Person.extension:fregPersonStatus">
-      <path value="Person.extension" />
-      <sliceName value="fregPersonStatus" />
-      <type>
-        <code value="Extension" />
-        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-freg-person-status" />
-      </type>
-    </element>
     <element id="Person.extension:deceased">
       <path value="Person.extension" />
       <sliceName value="deceased" />
@@ -127,6 +119,14 @@
       </type>
       <mustSupport value="true" />
     </element>
+    <element id="Person.extension:foreignIdentifier.extension:fregMetadata">
+      <path value="Person.extension.extension" />
+      <sliceName value="fregMetadata" />
+    </element>
+    <element id="Person.extension:foreignIdentifier.extension:fregMetadata.url">
+      <path value="Person.extension.extension.url" />
+      <fixedUri value="fregMetadata" />
+    </element>
     <element id="Person.extension:migration">
       <path value="Person.extension" />
       <sliceName value="migration" />
@@ -146,17 +146,33 @@
         <profile value="http://example.org/fhir/StructureDefinition/gd-guardianship" />
       </type>
     </element>
+    <element id="Person.extension:guardianship.extension:fregMetadata">
+      <path value="Person.extension.extension" />
+      <sliceName value="fregMetadata" />
+    </element>
+    <element id="Person.extension:guardianship.extension:fregMetadata.url">
+      <path value="Person.extension.extension.url" />
+      <fixedUri value="fregMetadata" />
+    </element>
     <element id="Person.extension:citizenship">
       <path value="Person.extension" />
       <sliceName value="citizenship" />
-      <short value="statsborgerskap fra FREG" />
-      <definition value="en betegnelse for et forhold til et land som innebærer at man har visse rettigheter og plikter som følger av lovgivningen i det enkelte land&#xD;&#xA;Styrer rettigheter og plikter. Man kan ha et ubegrenset antall statsborgerskap, men er i praksis ikke vanlig å ha flere enn 3.&#xD;&#xA;Før migrering fra DSF:&#xD;&#xA;DSF har nylig innført muligheten til å lagre flere statsborgerskap for personer med fødselsnummer, men ikke for personer med d-nummer.&#xD;&#xA;Når det nye Folkeregisteret har fått migrert statsborgerskap for alle personer i DSF og er master, vil det kunne lagre flere statsborgerskap også for personer med d-nummer." />
-      <alias value="statsborgerskap" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-person-citizenship" />
+      </type>
+    </element>
+    <element id="Person.extension:fregPersonStatus">
+      <path value="Person.extension" />
+      <sliceName value="fregPersonStatus" />
+      <short value="Status of a person from FREG " />
+      <definition value="Status of a person from FREG (bosatt, utflyttet etc), also contains the metadata about the person status." />
+      <alias value="Folkeregisterpersonstatus" />
       <min value="0" />
       <max value="*" />
       <type>
         <code value="Extension" />
-        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-person-citizenship" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-person-status" />
       </type>
     </element>
     <element id="Person.identifier">
