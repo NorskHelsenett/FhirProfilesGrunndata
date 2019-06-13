@@ -21,6 +21,8 @@
       <path value="Extension" />
       <short value="Optional Extensions Element" />
       <definition value="Informasjon om Vergemaal eller fremtidsfullmakt fra FREG.&#xD;&#xA;&#xD;&#xA;vergemål: forpliktelse og myndighet som en verge har til å handle på vegne av en person som mangler evnen til selv å dra omsorg for seg og det vedkommende eier&#xD;&#xA;representant for enslig mindreårig asylsøker: en juridisk erstatter for foreldrene&#xD;&#xA;stadfestet fremtidsfullmakt: en fremtidsfullmakt som er stadfestet til å trå i kraft fra et ikrafttredelsestidspunkt&#xD;&#xA;Folkeregisteret skal ha løsning for å motta opplysninger om omsorgsovertagelse og vergemål fra relevante offentlige virksomheter, samt videre distribuere til aktører med tillatelse.&#xD;&#xA;Folkeregisteret skal gjøre det enklere enn i dag å identifisere relasjoner mellom verge og person som har fått oppnevnt verge.&#xD;&#xA;Egenskapen gyldighetstidspunkt angir ikrafttredelsestidspunktet (vedtaksdato i meldingen fra Statens Sivilrettsforvaltning).&#xD;&#xA;Egenskapen opphørstidspunkt angir når vergemålet ble opphørt/skal opphøres. &#xD;&#xA;Folkeregisteret benytter verge og vergehaver som felles overordnet begrepsnavn ifm. vergemål, representasjon for enslig mindreårig flyktning og fremtidsfullmakt selv om begrepsnavnene i de to sistnevnte er representant – enslig mindreårig flyktning og fullmektig – fullmaktsgiver." />
+      <alias value="Vergemaal eller fremtidsfullmakt" />
+      <alias value="VergemaalRepresentasjonEllerFremtidsfullmakt" />
       <min value="0" />
       <max value="*" />
       <base>
@@ -519,6 +521,7 @@
       <alias value="extensions" />
       <alias value="user content" />
       <alias value="verge" />
+      <alias value="VergeRepresentantEllerFullmektig" />
       <min value="1" />
       <max value="1" />
       <base>
@@ -836,12 +839,12 @@
       <path value="Extension.extension.extension" />
       <sliceName value="identifier" />
       <short value="Folkeregisteridentifikatoren til vergen hvis denne finnes i Folkeregisteret" />
-      <definition value="Folkeregisteridentifikatoren til vergen hvis denne finnes i Folkeregisteret. Vergen kan være uten tilknytning til Norge og egenskapen vil være uten verdi.&#xD;&#xA;&#xD;&#xA;Fødselsnummer: personidentifikasjonsnummer for de som er, eller har vært, bosatt i Norge, samt personer som er &quot;ikke bosatt&quot;&#xD;&#xA;d-nummer: identifikasjonsnummer som tildeles personer med midlertidig tilknytning til Norge, det vil si som ikke er bosatt i Norge&#xD;&#xA;&#xD;&#xA;" />
+      <definition value="Folkeregisteridentifikatoren til vergen hvis denne finnes i Folkeregisteret. Vergen kan være uten tilknytning til Norge og egenskapen vil være uten verdi.&#xD;&#xA;&#xD;&#xA;Fødselsnummer: personidentifikasjonsnummer for de som er, eller har vært, bosatt i Norge, samt personer som er &quot;ikke bosatt&quot;&#xD;&#xA;d-nummer: identifikasjonsnummer som tildeles personer med midlertidig tilknytning til Norge, det vil si som ikke er bosatt i Norge" />
       <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
       <alias value="extensions" />
       <alias value="user content" />
       <alias value="fødselsEllerDNummer" />
-      <alias value="Folkeregisteridentifikatoren " />
+      <alias value="Folkeregisteridentifikatoren" />
       <min value="0" />
       <max value="1" />
       <base>
@@ -1510,6 +1513,51 @@
         <map value="N/A" />
       </mapping>
     </element>
+    <element id="Extension.extension:fregMetadata.Extension:metadata">
+      <path value="Extension.extension.extension" />
+      <sliceName value="metadata" />
+      <short value="registermetadata fra folkeregisteret" />
+      <definition value="Registermetadata describes metadata about resources available from the norwegian person index (folkeregisteret), all resources containing metadata from folkeregisteret will include registermetadata" />
+      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+      <alias value="extensions" />
+      <alias value="user content" />
+      <alias value="registermetadata" />
+      <alias value="RegistermetadataMedGyldighet" />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="Element.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
+      </type>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
+      <constraint>
+        <key value="ext-1" />
+        <severity value="error" />
+        <human value="Must have either extensions or value[x], not both" />
+        <expression value="extension.exists() != value.exists()" />
+        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
+      </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
+    </element>
     <element id="Extension.extension:fregMetadata.url">
       <path value="Extension.extension.url" />
       <representation value="xmlAttr" />
@@ -1550,7 +1598,7 @@
       <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
       <comment value="A stream of bytes, base64 encoded" />
       <min value="0" />
-      <max value="1" />
+      <max value="0" />
       <base>
         <path value="Extension.value[x]" />
         <min value="0" />
@@ -1677,53 +1725,6 @@
         <human value="All FHIR elements must have a @value or children" />
         <expression value="hasValue() or (children().count() &gt; id.count())" />
         <xpath value="@value|f:*|h:div" />
-      </constraint>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
-    </element>
-    <element id="Extension.extension:metadata.value[x].extension">
-      <path value="Extension.extension.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <rules value="open" />
-      </slicing>
-    </element>
-    <element id="Extension.extension:fregMetadata.value[x].extension:metadata">
-      <path value="Extension.extension.extension" />
-      <sliceName value="metadata" />
-      <short value="registermetadata fra folkeregisteret" />
-      <definition value="Registermetadata describes metadata about resources available from the norwegian person index (folkeregisteret), all resources containing metadata from folkeregisteret will include registermetadata" />
-      <alias value="registermetadata" />
-      <alias value="RegistermetadataMedGyldighet" />
-      <min value="0" />
-      <max value="*" />
-      <type>
-        <code value="Extension" />
-        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-      </constraint>
-      <constraint>
-        <key value="ext-1" />
-        <severity value="error" />
-        <human value="Must have either extensions or value[x], not both" />
-        <expression value="extension.exists() != value.exists()" />
-        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
       </constraint>
       <mapping>
         <identity value="rim" />
@@ -1916,6 +1917,8 @@
     <element id="Extension">
       <path value="Extension" />
       <definition value="Informasjon om Vergemaal eller fremtidsfullmakt fra FREG.&#xD;&#xA;&#xD;&#xA;vergemål: forpliktelse og myndighet som en verge har til å handle på vegne av en person som mangler evnen til selv å dra omsorg for seg og det vedkommende eier&#xD;&#xA;representant for enslig mindreårig asylsøker: en juridisk erstatter for foreldrene&#xD;&#xA;stadfestet fremtidsfullmakt: en fremtidsfullmakt som er stadfestet til å trå i kraft fra et ikrafttredelsestidspunkt&#xD;&#xA;Folkeregisteret skal ha løsning for å motta opplysninger om omsorgsovertagelse og vergemål fra relevante offentlige virksomheter, samt videre distribuere til aktører med tillatelse.&#xD;&#xA;Folkeregisteret skal gjøre det enklere enn i dag å identifisere relasjoner mellom verge og person som har fått oppnevnt verge.&#xD;&#xA;Egenskapen gyldighetstidspunkt angir ikrafttredelsestidspunktet (vedtaksdato i meldingen fra Statens Sivilrettsforvaltning).&#xD;&#xA;Egenskapen opphørstidspunkt angir når vergemålet ble opphørt/skal opphøres. &#xD;&#xA;Folkeregisteret benytter verge og vergehaver som felles overordnet begrepsnavn ifm. vergemål, representasjon for enslig mindreårig flyktning og fremtidsfullmakt selv om begrepsnavnene i de to sistnevnte er representant – enslig mindreårig flyktning og fullmektig – fullmaktsgiver." />
+      <alias value="Vergemaal eller fremtidsfullmakt" />
+      <alias value="VergemaalRepresentasjonEllerFremtidsfullmakt" />
     </element>
     <element id="Extension.extension">
       <path value="Extension.extension" />
@@ -1975,6 +1978,7 @@
       <short value="person som varetar umyndiges interesser og opptrer som rettslig representant på umyndiges vegne i saker" />
       <definition value="person som varetar umyndiges interesser og opptrer som rettslig representant på umyndiges vegne i saker" />
       <alias value="verge" />
+      <alias value="VergeRepresentantEllerFullmektig" />
       <min value="1" />
       <max value="1" />
     </element>
@@ -2012,9 +2016,9 @@
       <path value="Extension.extension.extension" />
       <sliceName value="identifier" />
       <short value="Folkeregisteridentifikatoren til vergen hvis denne finnes i Folkeregisteret" />
-      <definition value="Folkeregisteridentifikatoren til vergen hvis denne finnes i Folkeregisteret. Vergen kan være uten tilknytning til Norge og egenskapen vil være uten verdi.&#xD;&#xA;&#xD;&#xA;Fødselsnummer: personidentifikasjonsnummer for de som er, eller har vært, bosatt i Norge, samt personer som er &quot;ikke bosatt&quot;&#xD;&#xA;d-nummer: identifikasjonsnummer som tildeles personer med midlertidig tilknytning til Norge, det vil si som ikke er bosatt i Norge&#xD;&#xA;&#xD;&#xA;" />
+      <definition value="Folkeregisteridentifikatoren til vergen hvis denne finnes i Folkeregisteret. Vergen kan være uten tilknytning til Norge og egenskapen vil være uten verdi.&#xD;&#xA;&#xD;&#xA;Fødselsnummer: personidentifikasjonsnummer for de som er, eller har vært, bosatt i Norge, samt personer som er &quot;ikke bosatt&quot;&#xD;&#xA;d-nummer: identifikasjonsnummer som tildeles personer med midlertidig tilknytning til Norge, det vil si som ikke er bosatt i Norge" />
       <alias value="fødselsEllerDNummer" />
-      <alias value="Folkeregisteridentifikatoren " />
+      <alias value="Folkeregisteridentifikatoren" />
       <max value="1" />
     </element>
     <element id="Extension.extension:guardian.extension:identifier.url">
@@ -2064,12 +2068,8 @@
       <sliceName value="fregMetadata" />
       <max value="1" />
     </element>
-    <element id="Extension.extension:fregMetadata.url">
-      <path value="Extension.extension.url" />
-      <fixedUri value="fregMetadata" />
-    </element>
-    <element id="Extension.extension:metadata.value[x].extension">
-      <path value="Extension.extension.value[x].extension" />
+    <element id="Extension.extension:fregMetadata.extension">
+      <path value="Extension.extension.extension" />
       <slicing>
         <discriminator>
           <type value="value" />
@@ -2078,13 +2078,21 @@
         <rules value="open" />
       </slicing>
     </element>
-    <element id="Extension.extension:fregMetadata.value[x].extension:metadata">
-      <path value="Extension.extension.value[x].extension" />
+    <element id="Extension.extension:fregMetadata.Extension:metadata">
+      <path value="Extension.extension.extension" />
       <sliceName value="metadata" />
       <type>
         <code value="Extension" />
         <profile value="http://ehelse.no/fhir/StructureDefinition/gd-fregmetadata" />
       </type>
+    </element>
+    <element id="Extension.extension:fregMetadata.url">
+      <path value="Extension.extension.url" />
+      <fixedUri value="fregMetadata" />
+    </element>
+    <element id="Extension.extension:fregMetadata.value[x]">
+      <path value="Extension.extension.value[x]" />
+      <max value="0" />
     </element>
     <element id="Extension.url">
       <path value="Extension.url" />
