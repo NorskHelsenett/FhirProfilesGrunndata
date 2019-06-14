@@ -2,6 +2,11 @@
 	<meta>
 		<profile value="http://ehelse.no/fhir/StructureDefinition/gd-Person"/>
 	</meta>
+	<extension url="http://ehelse.no/fhir/StructureDefinition/gd-birth">
+		<extension url="birthYear">
+			<valueDate value="2019"/>
+		</extension>
+	</extension>
 	<identifier><!-- Fødselnummeret til brukeren -->
 		<extension url="http://ehelse.no/fhir/StructureDefinition/gd-person-identifier-status">
 			<extension url="valueCode">
