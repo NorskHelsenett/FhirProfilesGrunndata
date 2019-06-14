@@ -1,7 +1,17 @@
-<Person xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../STU3/fhir-all-xsd/fhir-single.xsd">
+<Person xmlns="http://hl7.org/fhir">
 	<meta>
 		<profile value="http://ehelse.no/fhir/StructureDefinition/gd-Person"/>
 	</meta>
+	<extension url="http://ehelse.no/fhir/StructureDefinition/gd-person-citizenship">
+		<extension url="code">
+			<valueCodeableConcept>
+				<coding>
+					<system value="urn:iso:std:iso:3166" />
+                    <code value="NO" />
+				</coding>
+			</valueCodeableConcept>
+		</extension>
+	</extension>
 	<extension url="http://ehelse.no/fhir/StructureDefinition/gd-deceased">
 		<extension url="deceasedDate">
 			<valueDate value="2019"/>
