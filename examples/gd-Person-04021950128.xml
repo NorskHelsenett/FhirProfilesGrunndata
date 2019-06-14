@@ -17,11 +17,7 @@
 				<valueCode value="NOR"/>
 			</extension>
 		</extension>
-		<type>
-			<coding>
-				<code value="NOR"/>
-			</coding>
-		</type>
+		<system value="http://ehelse.no/fhir/ValueSet/gd-person-identificationnumbertype-v05"/>
 		<value value="04021950128"/>
 	</identifier>
 	<name> <!-- Navnet til brukeren -->
