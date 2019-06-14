@@ -12,7 +12,7 @@
 		<value value="04021950128"/>
 	</identifier>
 		<identifier><!-- Foreign identifier -->
-		<extension url="http://ehelse.no/fhir/StructureDefinition/gd-identifier-foreign">
+		<extension url="http://ehelse.no/fhir/StructureDefinition/gd-Identifier-foreign">
 			<extension url="country">
 				<valueCode value="NOR"/>
 			</extension>
