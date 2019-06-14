@@ -4,9 +4,7 @@
 	</meta>
 	<extension url="http://ehelse.no/fhir/StructureDefinition/gd-deceased">
 		<extension url="deceasedDate">
-			<extension url="valueDate">
-					<valueDate value="2019"/>
-			</extension>
+			<valueDate value="2019"/>
 		</extension>
 	</extension>
 	<identifier><!-- Fødselnummeret til brukeren -->
