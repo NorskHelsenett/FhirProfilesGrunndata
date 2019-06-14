@@ -9,7 +9,7 @@
 			</extension>
 		</extension>
 		<system value="urn:oid:2.16.578.1.12.4.1.4.1"/>
-		<value value="04021950128"/>
+		<value value="The actual Fødselsnummer"/>
 	</identifier>
 	<identifier><!-- Foreign identifier -->
 		<extension url="http://hl7.no/fhir/StructureDefinition/gd-country-code-3166-1-3">
