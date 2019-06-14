@@ -11,6 +11,19 @@
 		<system value="urn:oid:2.16.578.1.12.4.1.4.1"/>
 		<value value="04021950128"/>
 	</identifier>
+		<identifier><!-- Foreign identifier -->
+		<extension url="http://ehelse.no/fhir/StructureDefinition/gd-identifier-foreign">
+			<extension url="country">
+				<valueCode value="NOR"/>
+			</extension>
+		</extension>
+		<type>
+			<coding>
+				<code value="NOR"/>
+			</coding>
+		</type>
+		<value value="04021950128"/>
+	</identifier>
 	<name> <!-- Navnet til brukeren -->
 		<family value="Søreng"/>
 		<given value="Jannice"/>
