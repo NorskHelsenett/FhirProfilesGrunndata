@@ -12,8 +12,10 @@
 		<value value="04021950128"/>
 	</identifier>
 	<identifier><!-- Foreign identifier -->
-		<extension url="country">
-			<valueCode value="NOR"/>
+		<extension url="http://hl7.no/fhir/StructureDefinition/gd-country-code-3166-1-3">
+			<extension url="valueCode">
+				<valueCode value="NOR"/>
+			</extension>
 		</extension>
 		<type>
 			<coding>
