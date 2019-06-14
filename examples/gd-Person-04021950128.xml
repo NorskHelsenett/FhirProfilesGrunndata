@@ -18,7 +18,7 @@
 			</extension>
 		</extension>
 		<system value="http://ehelse.no/fhir/ValueSet/gd-person-identificationnumbertype-v05"/>
-		<value value="04021950128"/>
+		<value value="utlendingsmyndighetenesIdentifikasjonsnummer"/>
 	</identifier>
 	<name> <!-- Navnet til brukeren -->
 		<family value="Søreng"/>
