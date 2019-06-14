@@ -4,7 +4,9 @@
 	</meta>
 	<extension url="http://ehelse.no/fhir/StructureDefinition/gd-birth">
 		<extension url="birthYear">
-				<valueDate value="2019"/>
+				<extension url="valueDate">
+					<valueDate value="2019"/>
+				</extension>
 		</extension>
 	</extension>
 	<identifier><!-- Fødselnummeret til brukeren -->
