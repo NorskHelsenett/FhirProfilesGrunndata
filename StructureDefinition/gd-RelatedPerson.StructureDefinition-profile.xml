@@ -102,6 +102,14 @@
         <profile value="http://ehelse.no/fhir/StructureDefinition/gd-marital-status" />
       </type>
     </element>
+    <element id="RelatedPerson.relationship:maritalStatus.extension:fregMarital.extension:fregMetadata">
+      <path value="RelatedPerson.relationship.extension.extension" />
+      <sliceName value="fregMetadata" />
+    </element>
+    <element id="RelatedPerson.relationship:maritalStatus.extension:fregMarital.extension:fregMetadata.url">
+      <path value="RelatedPerson.relationship.extension.extension.url" />
+      <fixedUri value="fregMetadata" />
+    </element>
     <element id="RelatedPerson.relationship:familyRelation">
       <path value="RelatedPerson.relationship" />
       <sliceName value="familyRelation" />
@@ -124,6 +132,14 @@
         <code value="Extension" />
         <profile value="http://ehelse.no/fhir/StructureDefinition/gd-family-relation" />
       </type>
+    </element>
+    <element id="RelatedPerson.relationship:familyRelation.extension:fregFamily.extension:fregMetadata">
+      <path value="RelatedPerson.relationship.extension.extension" />
+      <sliceName value="fregMetadata" />
+    </element>
+    <element id="RelatedPerson.relationship:familyRelation.extension:fregFamily.extension:fregMetadata.url">
+      <path value="RelatedPerson.relationship.extension.extension.url" />
+      <fixedUri value="fregMetadata" />
     </element>
     <element id="RelatedPerson.relationship:parental">
       <path value="RelatedPerson.relationship" />
@@ -177,10 +193,11 @@
       <sliceName value="guardianship" />
       <short value="Informasjon om Vergemaal eller fremtidsfullmakt fra FREG." />
       <definition value="vergemål: forpliktelse og myndighet som en verge har til å handle på vegne av en person som mangler evnen til selv å dra omsorg for seg og det vedkommende eier&#xD;&#xA;representant for enslig mindreårig asylsøker: en juridisk erstatter for foreldrene&#xD;&#xA;stadfestet fremtidsfullmakt: en fremtidsfullmakt som er stadfestet til å trå i kraft fra et ikrafttredelsestidspunkt&#xD;&#xA;Folkeregisteret skal ha løsning for å motta opplysninger om omsorgsovertagelse og vergemål fra relevante offentlige virksomheter, samt videre distribuere til aktører med tillatelse.&#xD;&#xA;Folkeregisteret skal gjøre det enklere enn i dag å identifisere relasjoner mellom verge og person som har fått oppnevnt verge.&#xD;&#xA;Egenskapen gyldighetstidspunkt angir ikrafttredelsestidspunktet (vedtaksdato i meldingen fra Statens Sivilrettsforvaltning).&#xD;&#xA;Egenskapen opphørstidspunkt angir når vergemålet ble opphørt/skal opphøres. &#xD;&#xA;Folkeregisteret benytter verge og vergehaver som felles overordnet begrepsnavn ifm. vergemål, representasjon for enslig mindreårig flyktning og fremtidsfullmakt selv om begrepsnavnene i de to sistnevnte er representant – enslig mindreårig flyktning og fullmektig – fullmaktsgiver." />
+      <min value="0" />
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://example.org/fhir/StructureDefinition/gd-guardianship" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-guardianship" />
       </type>
     </element>
     <element id="RelatedPerson.relationship:guardianship.coding">
