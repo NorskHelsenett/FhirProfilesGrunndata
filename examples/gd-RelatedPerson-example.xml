@@ -35,11 +35,15 @@
 			</extension>
 		</extension>
 	</extension>
+	<identifier>
+		<system value="urn:oid:2.16.578.1.12.4.1.4.1"/>
+		<value value="05073500186"/>
+	</identifier>
 	<patient>
 		<identifier>
 			<system value="urn:oid:2.16.578.1.12.4.1.4.1" />
-			<value value="05073500186" />
+			<value value="04021950128" />
 		</identifier>
-		<display value="Ærlend Sørgård" />
+		<display value="AKTVERDIG MANDAGSBIL" />
 	</patient>
 </RelatedPerson>
