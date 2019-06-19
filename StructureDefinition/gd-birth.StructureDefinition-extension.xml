@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="gd-birth" />
   <url value="http://ehelse.no/fhir/StructureDefinition/gd-birth" />
-  <version value="0.1" />
+  <version value="1.0" />
   <name value="gd-birth" />
   <title value="Fødsel" />
   <status value="draft" />
@@ -23,12 +23,21 @@
       <definition value="Fødsel og FødselINorge fra FREG&#xD;&#xA;Dette er to relaterte egenskaper for en Folkeregisterperson. &#xD;&#xA;&#xD;&#xA;Fødsel gir opplysninger om personens fødsel helt uavhengig av om denne er født i Norge eller ikke. Fødsel i Norge gir tilleggsinformasjon om fødselen hvis den har skjedd i Norge og er ment for bruk av spesielt interesserte og er derfor skilt ut fra fødsel.&#xD;&#xA;Det finnes ikke historiske data for disse informasjonselementene fordi det skal finnes maksimum en sannhet for hvert informasjonselement - selv om denne kan være korrigert flere ganger." />
       <comment value="The actual birthDate is given in the Person/Patient/RelatedPerson.birtDate element. The metadata from freg conserning the birtDate is always connecte to the gd-birth extension." />
       <alias value="foedsel" />
+      <min value="0" />
       <max value="1" />
       <base>
         <path value="Element" />
         <min value="0" />
         <max value="*" />
       </base>
+      <condition value="ele-1" />
+      <constraint>
+        <key value="ele-1" />
+        <severity value="error" />
+        <human value="All FHIR elements must have a @value or children" />
+        <expression value="hasValue() or (children().count() &gt; id.count())" />
+        <xpath value="@value|f:*|h:div" />
+      </constraint>
       <constraint>
         <key value="ext-1" />
         <severity value="error" />
@@ -36,6 +45,10 @@
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
       </constraint>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
