@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<StructureDefinition xmlns="http://hl7.org/fhir">
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/GitRepo/R4/fhir-all-xsd/fhir-single.xsd">
   <id value="gd-birth-in-norway" />
   <url value="http://ehelse.no/fhir/StructureDefinition/gd-birth-in-norway" />
-  <version value="1.0" />
-  <name value="gd-birth-in-norway" />
+  <version value="2.0.0" />
+  <name value="BirthInNorway" />
   <status value="draft" />
   <date value="2019-04-30" />
   <description value="Fødsel i Norge gir tilleggsinformasjon om fødselen hvis den har skjedd i Norge og er ment for bruk av spesielt interesserte og er derfor skilt ut fra fødsel." />
-  <fhirVersion value="3.0.1" />
+  <fhirVersion value="4.0.0" />
   <kind value="complex-type" />
   <abstract value="false" />
-  <contextType value="resource" />
-  <context value="Person" />
-  <context value="Patient" />
-  <context value="RelatedPerson" />
+  <context>
+    <type value="element" />
+    <expression value="Person" />
+  </context>
+  <context>
+    <type value="element" />
+    <expression value="Patient"/>
+  </context>
+  <context>
+    <type value="element" />
+    <expression value="RelatedPerson"/>
+  </context>
   <type value="Extension" />
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
   <derivation value="constraint" />

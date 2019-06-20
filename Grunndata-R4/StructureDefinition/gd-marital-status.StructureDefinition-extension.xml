@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<StructureDefinition xmlns="http://hl7.org/fhir">
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/GitRepo/R4/fhir-all-xsd/fhir-single.xsd">
   <id value="gd-marital-status" />
   <url value="http://ehelse.no/fhir/StructureDefinition/gd-marital-status" />
-  <version value="0.1" />
-  <name value="gd-marital-status" />
+  <version value="2.0.0" />
+  <name value="MaritalStatus" />
   <status value="draft" />
   <date value="2019-05-06" />
   <description value="Extension for representing information regarding marital status. Represents the same information awailable in the Norwegian Folkeregister (FREG)" />
-  <fhirVersion value="3.0.1" />
+  <fhirVersion value="4.0.0" />
   <kind value="complex-type" />
   <abstract value="false" />
-  <contextType value="resource" />
-  <context value="RelatedPerson" />
-  <context value="RelatedPerson.relationship" />
+  <context>
+    <type value="element" />
+    <expression value="RelatedPerson" />
+  </context>
+  <context>
+    <type value="element" />
+    <expression value="RelatedPerson.relationship" />
+  </context>
   <type value="Extension" />
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
   <derivation value="constraint" />
