@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CapabilityStatement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/GitRepo/FHIR/STU3/fhir-all-xsd/fhir-single.xsd">
-	<url value="http://ehelse.no/fhir/CapabilityStatement/gd-Person-Server-Requirements/v001"/>
-	<name value="gd-Person-Server-Requirements"/>
+<CapabilityStatement xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/GitRepo/R4/fhir-all-xsd/fhir-single.xsd">
+	<url value="http://ehelse.no/fhir/CapabilityStatement/gd-Person-Server-Requirements/v002"/>
+	<name value="PersonServerRequirements"/>
 	<title value="Requirements for Grunndata Person Service Interface"/>
 	<status value="draft"/>
-	<date value="2019-05-08"/>
+	<date value="2019-06-21"/>
 	<description value="Requirements for the Grunndata Person service provided by Direktoratet for e-helse"/>
 	<kind value="requirements"/>
-	<fhirVersion value="3.0.1"/>
-	<acceptUnknown value="both"/>
+	<fhirVersion value="4.0.0"/>
 	<format value="json"/>
 	<format value="xml"/>
 	<rest>
@@ -23,9 +22,7 @@
 				</extension>
 			</extension>
 			<type value="Person"/>
-			<profile>
-				<reference value="http://ehelse.no/fhir/StructureDefinition/gd-Person"/>
-			</profile>
+			<profile value="http://ehelse.no/fhir/StructureDefinition/gd-Person"/>
 			<interaction>
 				<code value="search-type"/>
 				<documentation value="Search for a specific Resource type on some specified filter criteria"/>
@@ -57,9 +54,7 @@
 		</resource>
 		<resource>
 			<type value="RelatedPerson"/>
-			<profile>
-				<reference value="http://ehelse.no/fhir/StructureDefinition/gd-RelatedPerson"/>
-			</profile>
+			<profile value="http://ehelse.no/fhir/StructureDefinition/gd-RelatedPerson"/>
 			<interaction>
 				<code value="search-type"/>
 				<documentation value="Search for a specific Resource type on some specified filter criteria"/>
