@@ -1,3 +1,6 @@
+# Further work on Grunndata for HL7 FHIR R4 on HL7.no repo
+https://github.com/HL7Norway/Grunndata-profiles
+
 # Område for profiler tilhørende Grunndata
 - Profiler av resources
 - Extensions
