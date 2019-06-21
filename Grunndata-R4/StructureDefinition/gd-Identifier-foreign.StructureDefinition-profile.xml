@@ -2,12 +2,12 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="gd-Identifier-foreign" />
   <url value="http://ehelse.no/fhir/StructureDefinition/gd-Identifier-foreign" />
-  <version value="0.1" />
-  <name value="gd-Identifier-foreign" />
+  <version value="2.0.0" />
+  <name value="IdentifierForeign" />
   <status value="draft" />
   <date value="2019-06-13" />
   <description value="Identification number from foreign authority or the identifier value from the Norwegian immigration administration.&#xD;&#xA;&#xD;&#xA;utenlandsk personidentifikasjon: informasjon om et personidentifikasjonsnummer fra en utenlandsk myndighet&#xD;&#xA;&#xD;&#xA;utlendingsmyndighetenes identifikasjonsnummer: personidentifikasjonsnummer for person som blir førstegangsregistrert i landet av utlendingsmyndighetene. Dette nummeret går i dag ofte under navnet DUF-nummer" />
-  <fhirVersion value="3.0.1" />
+  <fhirVersion value="4.0.0" />
   <kind value="complex-type" />
   <abstract value="false" />
   <type value="Identifier" />
@@ -26,7 +26,7 @@
       <min value="0" />
       <max value="*" />
       <base>
-        <path value="Element" />
+        <path value="Identifier" />
         <min value="0" />
         <max value="*" />
       </base>
@@ -48,7 +48,7 @@
       </mapping>
       <mapping>
         <identity value="rim" />
-        <map value="II - see see identifier pattern at http://wiki.hl7.org/index.php?title=Common_Design_Patterns#Identifier_Pattern for relevant discussion. The Identifier class is a little looser than the v3 type II because it allows URIs as well as registered OIDs or GUIDs.  Also maps to Role[classCode=IDENT]" />
+        <map value="II - The Identifier class is a little looser than the v3 type II because it allows URIs as well as registered OIDs or GUIDs.  Also maps to Role[classCode=IDENT]" />
       </mapping>
       <mapping>
         <identity value="servd" />
@@ -58,9 +58,8 @@
     <element id="Identifier.id">
       <path value="Identifier.id" />
       <representation value="xmlAttr" />
-      <short value="xml:id (or equivalent in JSON)" />
-      <definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
-      <comment value="Note that FHIR strings may not exceed 1MB in size" />
+      <short value="Unique id for inter-element referencing" />
+      <definition value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
       <min value="0" />
       <max value="1" />
       <base>
@@ -69,16 +68,18 @@
         <max value="1" />
       </base>
       <type>
-        <code value="string" />
+        <code>
+          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
+            <valueString value="string" />
+          </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
+            <valueString value="xsd:string" />
+          </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
+            <valueString value="xsd:string" />
+          </extension>
+        </code>
       </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-      </constraint>
       <mapping>
         <identity value="rim" />
         <map value="n/a" />
@@ -94,8 +95,8 @@
         <description value="Extensions are always sliced by (at least) url" />
         <rules value="open" />
       </slicing>
-      <short value="Additional Content defined by implementations" />
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+      <short value="Additional content defined by implementations" />
+      <definition value="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
       <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
       <alias value="extensions" />
       <alias value="user content" />
@@ -188,85 +189,6 @@
       <alias value="user content" />
       <alias value="utstederland" />
       <min value="1" />
-      <max value="1" />
-      <base>
-        <path value="Element.extension" />
-        <min value="0" />
-        <max value="*" />
-      </base>
-      <type>
-        <code value="Extension" />
-        <profile value="http://hl7.no/fhir/StructureDefinition/gd-country-code-3166-1-3" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-      </constraint>
-      <constraint>
-        <key value="ext-1" />
-        <severity value="error" />
-        <human value="Must have either extensions or value[x], not both" />
-        <expression value="extension.exists() != value.exists()" />
-        <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
-      </constraint>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
-    </element>
-    <element id="Identifier.extension:country.id">
-      <path value="Identifier.extension.id" />
-      <representation value="xmlAttr" />
-      <short value="xml:id (or equivalent in JSON)" />
-      <definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
-      <comment value="Note that FHIR strings may not exceed 1MB in size" />
-      <min value="0" />
-      <max value="1" />
-      <base>
-        <path value="Element.id" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="string" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-      </constraint>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-    </element>
-    <element id="Identifier.extension:country.extension">
-      <path value="Identifier.extension.extension" />
-      <slicing>
-        <discriminator>
-          <type value="value" />
-          <path value="url" />
-        </discriminator>
-        <description value="Extensions are always sliced by (at least) url" />
-        <rules value="open" />
-      </slicing>
-      <short value="Additional Content defined by implementations" />
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
-      <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
-      <alias value="extensions" />
-      <alias value="user content" />
-      <min value="0" />
       <max value="*" />
       <base>
         <path value="Element.extension" />
@@ -275,6 +197,7 @@
       </base>
       <type>
         <code value="Extension" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-country-code-3166-1-3" />
       </type>
       <condition value="ele-1" />
       <constraint>
@@ -291,78 +214,6 @@
         <expression value="extension.exists() != value.exists()" />
         <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])" />
       </constraint>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
-    </element>
-    <element id="Identifier.extension:country.url">
-      <path value="Identifier.extension.url" />
-      <representation value="xmlAttr" />
-      <short value="identifies the meaning of the extension" />
-      <definition value="Source of the definition for the extension code - a logical name or a URL." />
-      <comment value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
-      <min value="1" />
-      <max value="1" />
-      <base>
-        <path value="Extension.url" />
-        <min value="1" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="uri" />
-      </type>
-      <fixedUri value="http://hl7.no/fhir/StructureDefinition/gd-country-code-3166-1-3" />
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-      </constraint>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
-    </element>
-    <element id="Identifier.extension:country.valueCode:valueCode">
-      <path value="Identifier.extension.valueCode" />
-      <sliceName value="valueCode" />
-      <short value="Value of extension" />
-      <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
-      <comment value="A stream of bytes, base64 encoded" />
-      <min value="1" />
-      <max value="1" />
-      <base>
-        <path value="Extension.value[x]" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="code" />
-      </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-      </constraint>
-      <binding>
-        <strength value="required" />
-        <description value="ISO 3166 alpha 3" />
-        <valueSetUri value="http://hl7.org/fhir/valueset-iso3166-1-3.html" />
-      </binding>
       <mapping>
         <identity value="rim" />
         <map value="n/a" />
@@ -374,16 +225,16 @@
     </element>
     <element id="Identifier.use">
       <path value="Identifier.use" />
-      <short value="usual | official | temp | secondary (If known)" />
+      <short value="usual | official | temp | secondary | old (If known)" />
       <definition value="The purpose of this identifier." />
-      <comment value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
+      <comment value="Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
       <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
       <min value="0" />
       <max value="1" />
       <base>
         <path value="Identifier.use" />
         <min value="0" />
-        <max value="1" />
+        <max value="*" />
       </base>
       <type>
         <code value="code" />
@@ -397,16 +248,12 @@
         <xpath value="@value|f:*|h:div" />
       </constraint>
       <isModifier value="true" />
+      <isModifierReason value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one." />
       <isSummary value="true" />
       <binding>
-        <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
-          <valueString value="IdentifierUse" />
-        </extension>
         <strength value="required" />
         <description value="Identifies the purpose for this identifier, if known ." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-use" />
-        </valueSetReference>
+        <valueSet value="http://hl7.org/fhir/ValueSet/identifier-use|4.0.0" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -425,7 +272,7 @@
       <path value="Identifier.type" />
       <short value="Description of identifier" />
       <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
-      <comment value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage. &#xA;&#xA;Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
+      <comment value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
       <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
       <alias value="identifikasjonsnummertype" />
       <min value="0" />
@@ -433,7 +280,7 @@
       <base>
         <path value="Identifier.type" />
         <min value="0" />
-        <max value="1" />
+        <max value="*" />
       </base>
       <type>
         <code value="CodeableConcept" />
@@ -450,9 +297,7 @@
       <binding>
         <strength value="extensible" />
         <description value="Identifier type of foreign person identifier" />
-        <valueSetReference>
-          <reference value="http://ehelse.no/fhir/ValueSet/gd-person-identificationnumbertype-v05" />
-        </valueSetReference>
+        <valueSet value="http://ehelse.no/fhir/ValueSet/gd-person-identificationnumbertype-v05" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -482,9 +327,8 @@
     <element id="Identifier.type.id">
       <path value="Identifier.type.id" />
       <representation value="xmlAttr" />
-      <short value="xml:id (or equivalent in JSON)" />
-      <definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
-      <comment value="Note that FHIR strings may not exceed 1MB in size" />
+      <short value="Unique id for inter-element referencing" />
+      <definition value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
       <min value="0" />
       <max value="1" />
       <base>
@@ -493,16 +337,18 @@
         <max value="1" />
       </base>
       <type>
-        <code value="string" />
+        <code>
+          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
+            <valueString value="string" />
+          </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
+            <valueString value="xsd:string" />
+          </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
+            <valueString value="xsd:string" />
+          </extension>
+        </code>
       </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-      </constraint>
       <mapping>
         <identity value="rim" />
         <map value="n/a" />
@@ -518,8 +364,8 @@
         <description value="Extensions are always sliced by (at least) url" />
         <rules value="open" />
       </slicing>
-      <short value="Additional Content defined by implementations" />
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+      <short value="Additional content defined by implementations" />
+      <definition value="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
       <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
       <alias value="extensions" />
       <alias value="user content" />
@@ -562,7 +408,7 @@
       <short value="Code defined by a terminology system" />
       <definition value="A reference to a code defined by a terminology system." />
       <comment value="Codes may be defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED CT - see the HL7 v3 Core Principles for more information.  Ordering of codings is undefined and SHALL NOT be used to infer meaning. Generally, at most only one of the coding values will be labeled as UserSelected = true." />
-      <requirements value="Allows for translations and alternate encodings within a code system.  Also supports communication of the same instance to systems requiring different encodings." />
+      <requirements value="Allows for alternative encodings within a code system, and translations to other code systems." />
       <min value="1" />
       <max value="1" />
       <base>
@@ -614,9 +460,8 @@
     <element id="Identifier.type.coding.id">
       <path value="Identifier.type.coding.id" />
       <representation value="xmlAttr" />
-      <short value="xml:id (or equivalent in JSON)" />
-      <definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
-      <comment value="Note that FHIR strings may not exceed 1MB in size" />
+      <short value="Unique id for inter-element referencing" />
+      <definition value="Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
       <min value="0" />
       <max value="1" />
       <base>
@@ -625,16 +470,18 @@
         <max value="1" />
       </base>
       <type>
-        <code value="string" />
+        <code>
+          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-json-type">
+            <valueString value="string" />
+          </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-xml-type">
+            <valueString value="xsd:string" />
+          </extension>
+          <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-rdf-type">
+            <valueString value="xsd:string" />
+          </extension>
+        </code>
       </type>
-      <condition value="ele-1" />
-      <constraint>
-        <key value="ele-1" />
-        <severity value="error" />
-        <human value="All FHIR elements must have a @value or children" />
-        <expression value="hasValue() or (children().count() &gt; id.count())" />
-        <xpath value="@value|f:*|h:div" />
-      </constraint>
       <mapping>
         <identity value="rim" />
         <map value="n/a" />
@@ -650,8 +497,8 @@
         <description value="Extensions are always sliced by (at least) url" />
         <rules value="open" />
       </slicing>
-      <short value="Additional Content defined by implementations" />
-      <definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+      <short value="Additional content defined by implementations" />
+      <definition value="May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
       <comment value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
       <alias value="extensions" />
       <alias value="user content" />
@@ -693,14 +540,14 @@
       <path value="Identifier.type.coding.system" />
       <short value="Identity of the terminology system" />
       <definition value="The identification of the code system that defines the meaning of the symbol in the code." />
-      <comment value="The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should de-reference to some definition that establish the system clearly and unambiguously." />
+      <comment value="The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should reference to some definition that establishes the system clearly and unambiguously." />
       <requirements value="Need to be unambiguous about the source of the definition of the symbol." />
       <min value="0" />
       <max value="1" />
       <base>
         <path value="Coding.system" />
         <min value="0" />
-        <max value="1" />
+        <max value="*" />
       </base>
       <type>
         <code value="uri" />
@@ -734,14 +581,14 @@
     <element id="Identifier.type.coding.version">
       <path value="Identifier.type.coding.version" />
       <short value="Version of the system - if relevant" />
-      <definition value="The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged." />
+      <definition value="The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured, and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged." />
       <comment value="Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date." />
       <min value="0" />
       <max value="1" />
       <base>
         <path value="Coding.version" />
         <min value="0" />
-        <max value="1" />
+        <max value="*" />
       </base>
       <type>
         <code value="string" />
@@ -776,14 +623,14 @@
       <path value="Identifier.type.coding.code" />
       <short value="Symbol in syntax defined by the system" />
       <definition value="A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)." />
-      <comment value="Note that FHIR strings may not exceed 1MB in size" />
+      <comment value="Note that FHIR strings SHALL NOT exceed 1MB in size" />
       <requirements value="Need to refer to a particular code in the system." />
       <min value="1" />
       <max value="1" />
       <base>
         <path value="Coding.code" />
         <min value="0" />
-        <max value="1" />
+        <max value="*" />
       </base>
       <type>
         <code value="code" />
@@ -815,20 +662,17 @@
       </mapping>
     </element>
     <element id="Identifier.type.coding.display">
-      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
-        <valueBoolean value="true" />
-      </extension>
       <path value="Identifier.type.coding.display" />
       <short value="Representation defined by the system" />
       <definition value="A representation of the meaning of the code in the system, following the rules of the system." />
-      <comment value="Note that FHIR strings may not exceed 1MB in size" />
+      <comment value="Note that FHIR strings SHALL NOT exceed 1MB in size" />
       <requirements value="Need to be able to carry a human-readable meaning of the code for readers that do not know  the system." />
       <min value="0" />
       <max value="1" />
       <base>
         <path value="Coding.display" />
         <min value="0" />
-        <max value="1" />
+        <max value="*" />
       </base>
       <type>
         <code value="string" />
@@ -862,7 +706,7 @@
     <element id="Identifier.type.coding.userSelected">
       <path value="Identifier.type.coding.userSelected" />
       <short value="If this coding was chosen directly by the user" />
-      <definition value="Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays)." />
+      <definition value="Indicates that this coding was chosen by a user directly - e.g. off a pick list of available items (codes or displays)." />
       <comment value="Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely." />
       <requirements value="This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing." />
       <min value="0" />
@@ -870,7 +714,7 @@
       <base>
         <path value="Coding.userSelected" />
         <min value="0" />
-        <max value="1" />
+        <max value="*" />
       </base>
       <type>
         <code value="boolean" />
@@ -902,9 +746,6 @@
       </mapping>
     </element>
     <element id="Identifier.type.text">
-      <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable">
-        <valueBoolean value="true" />
-      </extension>
       <path value="Identifier.type.text" />
       <short value="Plain text representation of the concept" />
       <definition value="A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user." />
@@ -915,7 +756,7 @@
       <base>
         <path value="CodeableConcept.text" />
         <min value="0" />
-        <max value="1" />
+        <max value="*" />
       </base>
       <type>
         <code value="string" />
@@ -950,14 +791,14 @@
       <path value="Identifier.system" />
       <short value="The namespace for the identifier value" />
       <definition value="Establishes the namespace for the value - that is, a URL that describes a set values that are unique." />
-      <comment value="see http://en.wikipedia.org/wiki/Uniform_resource_identifier" />
+      <comment value="Identifier.system is always case sensitive." />
       <requirements value="There are many sets  of identifiers.  To perform matching of two identifiers, we need to know what set we're dealing with. The system identifies a particular set of unique identifiers." />
       <min value="1" />
       <max value="1" />
       <base>
         <path value="Identifier.system" />
         <min value="0" />
-        <max value="1" />
+        <max value="*" />
       </base>
       <type>
         <code value="uri" />
@@ -965,7 +806,7 @@
       <fixedUri value="http://ehelse.no/fhir/ValueSet/gd-person-identificationnumbertype-v05" />
       <example>
         <label value="General" />
-        <valueUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri" />
+        <valueUri value="http://www.acme.com/identifiers/patient" />
       </example>
       <condition value="ele-1" />
       <constraint>
@@ -997,14 +838,14 @@
       <path value="Identifier.value" />
       <short value="The value that is unique" />
       <definition value="The portion of the identifier typically relevant to the user and which is unique within the context of the system." />
-      <comment value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value's primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html)." />
+      <comment value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value's primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html). Identifier.value is to be treated as case sensitive unless knowledge of the Identifier.system allows the processer to be confident that non-case-sensitive processing is safe." />
       <alias value="identifikasjonsnummer" />
       <min value="1" />
       <max value="1" />
       <base>
         <path value="Identifier.value" />
         <min value="0" />
-        <max value="1" />
+        <max value="*" />
       </base>
       <type>
         <code value="string" />
@@ -1043,13 +884,13 @@
       <path value="Identifier.period" />
       <short value="Time period when id is/was valid for use" />
       <definition value="Time period during which identifier is/was valid for use." />
-      <comment value="This is not a duration - that's a measure of time (a separate type), but a duration that occurs at a fixed value of time. A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;). If duration is required, specify the type as Interval|Duration." />
+      <comment value="A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;).&#xA;&#xA;Period is not used for a duration (a measure of elapsed time). See [Duration](datatypes.html#Duration)." />
       <min value="0" />
       <max value="1" />
       <base>
         <path value="Identifier.period" />
         <min value="0" />
-        <max value="1" />
+        <max value="*" />
       </base>
       <type>
         <code value="Period" />
@@ -1066,8 +907,8 @@
         <key value="per-1" />
         <severity value="error" />
         <human value="If present, start SHALL have a lower value than end" />
-        <expression value="start.empty() or end.empty() or (start &lt;= end)" />
-        <xpath value="not(exists(f:start)) or not(exists(f:end)) or (f:start/@value &lt;= f:end/@value)" />
+        <expression value="start.hasValue().not() or end.hasValue().not() or (start &lt;= end)" />
+        <xpath value="not(exists(f:start/@value)) or not(exists(f:end/@value)) or (xs:dateTime(f:start/@value) &lt;= xs:dateTime(f:end/@value))" />
       </constraint>
       <isSummary value="true" />
       <mapping>
@@ -1105,7 +946,7 @@
       <base>
         <path value="Identifier.assigner" />
         <min value="0" />
-        <max value="1" />
+        <max value="*" />
       </base>
       <type>
         <code value="Reference" />
@@ -1186,15 +1027,11 @@
       <definition value="Country where the intentifier is issued. Represented by iso 3166 alpha 3 code" />
       <alias value="utstederland" />
       <min value="1" />
+      <max value="*" />
       <type>
         <code value="Extension" />
-        <profile value="http://hl7.no/fhir/StructureDefinition/gd-country-code-3166-1-3" />
+        <profile value="http://ehelse.no/fhir/StructureDefinition/gd-country-code-3166-1-3" />
       </type>
-    </element>
-    <element id="Identifier.extension:country.valueCode:valueCode">
-      <path value="Identifier.extension.valueCode" />
-      <sliceName value="valueCode" />
-      <min value="1" />
     </element>
     <element id="Identifier.type">
       <path value="Identifier.type" />
@@ -1202,9 +1039,7 @@
       <binding>
         <strength value="extensible" />
         <description value="Identifier type of foreign person identifier" />
-        <valueSetReference>
-          <reference value="http://ehelse.no/fhir/ValueSet/gd-person-identificationnumbertype-v05" />
-        </valueSetReference>
+        <valueSet value="http://ehelse.no/fhir/ValueSet/gd-person-identificationnumbertype-v05" />
       </binding>
     </element>
     <element id="Identifier.type.coding">
