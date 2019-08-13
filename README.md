@@ -1,3 +1,6 @@
+# DEPRECATED DEPRECATED DEPRECATED
+This version of the profiles are DEPRECATED. Please refer to the HL7 FHIR R4 version.
+
 # Further work on Grunndata for HL7 FHIR R4 on HL7.no repo
 https://github.com/HL7Norway/Grunndata-profiles
 
